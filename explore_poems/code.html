@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#ffffff",
+              "surface-container-low": "#131313",
+              "tertiary-fixed-dim": "#00d4ee",
+              "primary-container": "#0ec557",
+              "surface-dim": "#0e0e0e",
+              "on-secondary-container": "#e2ffe9",
+              "primary-dim": "#46e572",
+              "on-tertiary-fixed-variant": "#005763",
+              "background": "#0e0e0e",
+              "secondary-fixed-dim": "#6deca8",
+              "on-primary-fixed-variant": "#006227",
+              "on-primary-fixed": "#004218",
+              "outline": "#767575",
+              "on-background": "#ffffff",
+              "inverse-primary": "#006e2d",
+              "on-error-container": "#ffd2c8",
+              "tertiary-fixed": "#0fe3ff",
+              "primary-fixed-dim": "#46e572",
+              "surface-container-high": "#20201f",
+              "on-surface-variant": "#adaaaa",
+              "error-dim": "#d53d18",
+              "error": "#ff7351",
+              "surface-bright": "#2c2c2c",
+              "surface-variant": "#262626",
+              "surface": "#0e0e0e",
+              "surface-container-lowest": "#000000",
+              "on-primary": "#005722",
+              "tertiary-container": "#0fe3ff",
+              "tertiary-dim": "#00d4ee",
+              "on-tertiary-fixed": "#003840",
+              "on-tertiary-container": "#004d58",
+              "on-secondary-fixed-variant": "#006940",
+              "surface-tint": "#57f47f",
+              "secondary": "#7cfbb5",
+              "inverse-surface": "#fcf9f8",
+              "secondary-dim": "#6deca8",
+              "on-secondary-fixed": "#00492b",
+              "inverse-on-surface": "#565555",
+              "surface-container-highest": "#262626",
+              "on-secondary": "#005e39",
+              "surface-container": "#1a1a1a",
+              "on-primary-container": "#003411",
+              "secondary-fixed": "#7cfbb5",
+              "tertiary": "#88ebff",
+              "on-error": "#450900",
+              "outline-variant": "#484847",
+              "error-container": "#b92902",
+              "primary": "#57f47f",
+              "on-tertiary": "#005762",
+              "secondary-container": "#006d42",
+              "primary-fixed": "#57f47f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="bg-[#0e0e0e] dark:bg-[#0e0e0e] fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-primary/20">
+<img class="w-full h-full object-cover" data-alt="User profile photo avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaLv-TqTm83OJy80fIoE2MlyRKz095xkQLCsHiKnbvHmgEXiwu0fEordW9zM1fWUboDMZ3aGWk3_dnYPfumJyzmwN1sq3hqrQteyZI3LH8zci8G0lhBEzc7U4Yj_jqh4_t7kgQmxCzztNJ0qaSCo-KWGDwhAet82FiHIzB3WffYUQXCG42AydQkOtkI3T3bKsXY5ca1pyUFWgbHsmqvdUMQ-y7NXtHLOhshwfk7N1RhEAg2IlPPNshMR6_5GLWo-BXfyC7lLoghF62"/>
+</div>
+<h1 class="text-xl font-black text-white tracking-widest uppercase font-['Plus_Jakarta_Sans']">The Velvet Anthology</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors active:scale-95 active:duration-150 text-[#57f47f]">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Search Bar Section -->
+<section class="mb-12">
+<h2 class="font-headline text-4xl font-extrabold tracking-tight mb-8">Search</h2>
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-5 pl-14 pr-6 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/50 font-headline font-semibold transition-all" placeholder="What poem speaks to you?" type="text"/>
+</div>
+</section>
+<!-- Category Grid -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-2xl font-bold">Browse categories</h3>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Category Card: Melancholy -->
+<div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#1e3a8a] to-[#3b82f6] group cursor-pointer transition-transform hover:scale-[1.02]">
+<div class="p-5">
+<span class="font-headline text-2xl font-bold text-white">Melancholy</span>
+</div>
+<img class="absolute -bottom-2 -right-6 w-32 h-32 object-cover rotate-12 rounded-lg shadow-2xl opacity-80 group-hover:rotate-6 transition-transform" data-alt="Abstract blue texture suggesting melancholy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBems0MBDueeo0YNYqkJ2iUkGeYU-moyWA3hBsRzqXKVFBZEZJUV3r1aeQDWMTpHCi3m2397atOtKORvFx0ftu8ubDRQFgBMl-BthgO7bm_B66ErD3B8Ode_KZp14YPCCWymla9Arh15VRzxY3QGO2jurmzEUyYQaGB2M6FaL-lTRcXBCXiUNRZgKLJpPPTx7P3LIBv_3siZu_aClFALvMkVHpwhRSCLWZZo9eQ3nXOCcRJ3wovEUq3untI_KOs2UGSHKsu_v8EMNKW"/>
+</div>
+<!-- Category Card: Love -->
+<div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#9f1239] to-[#fb7185] group cursor-pointer transition-transform hover:scale-[1.02]">
+<div class="p-5">
+<span class="font-headline text-2xl font-bold text-white">Love</span>
+</div>
+<img class="absolute -bottom-2 -right-6 w-32 h-32 object-cover rotate-12 rounded-lg shadow-2xl opacity-80 group-hover:rotate-6 transition-transform" data-alt="Soft red roses representing love" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpXEwu56uZTqBPHp6dzg8ly-2NiZPCnyzyTD3hlr9OGSHsC7Noe3-IRzp8_pwhwZsVjIY9cl_w1-JHV8X__rLAM-hy793SX9OYlywH4QwYzFE5hW2rfNIoN-4HuAps0w2bnX4ojiMhpiEQaySf9yX33E5_RIhu2XEKbpH8n6fzBOXQCwcyR5p1UdLQMDBK_WStQNP9-bKLFscWtXbRx4mgUTUMNVKHKPWaYBVARmvdlEaneguKcQPdixX6y0TlnxwDQwigLH0S8G-9"/>
+</div>
+<!-- Category Card: Abstract -->
+<div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#7e22ce] to-[#c084fc] group cursor-pointer transition-transform hover:scale-[1.02]">
+<div class="p-5">
+<span class="font-headline text-2xl font-bold text-white">Abstract</span>
+</div>
+<img class="absolute -bottom-2 -right-6 w-32 h-32 object-cover rotate-12 rounded-lg shadow-2xl opacity-80 group-hover:rotate-6 transition-transform" data-alt="Abstract colorful painting with vibrant swirls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSea51-jl-r5sL9WfiKqZewi-b2wVEcAS_32NY7os-_umVime14lZ6F1drOISGvMLyWo4cVMCVp0rsmU9ZWkqdlFIGsKNauUS89TpMG6jOqKNX6RHHQmRGN3tIamP-OoVxPQrr2G8mh5fFHjrzVgAnUh37qXmrPLydSgCszvYjPNXE0IwJU8OPgdRY4wWorxBe5oCWtsqoQBoagUN3dnoZvO6mSVMO_7TrbmXyzlnlUTbTqWy3IRvj90HrruKSbE0gmmGlmXd16flS"/>
+</div>
+<!-- Category Card: Nature -->
+<div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#065f46] to-[#34d399] group cursor-pointer transition-transform hover:scale-[1.02]">
+<div class="p-5">
+<span class="font-headline text-2xl font-bold text-white">Nature</span>
+</div>
+<img class="absolute -bottom-2 -right-6 w-32 h-32 object-cover rotate-12 rounded-lg shadow-2xl opacity-80 group-hover:rotate-6 transition-transform" data-alt="Lush green forest sunlight rays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkDnYjIa8STStkHDHL_3GcJrQcAKYoFo4_nKd4MpL87PbPdZ8usBG04W0kMKlh-7fuFn4Ld2RvH1EdTD_u1vmm9cFr8fCONND3KjGzNK7WFl5y3SM7ygD6dMGNwi9HhqqIYiCmgNHh1CwL6tvZcqi5XCy1apxRwOU1-x_wZ4FqeHkrp0cpT_wXtoL22aaA4Ypm4YXRCsAVcHAjGfsOed7eBiK1v55kPPW0vGW5vbbyGcE6A6Xt4J6sWrFG1k3liDMdPzjCgaFZ51Dy"/>
+</div>
+</div>
+</section>
+<!-- Browse All / Recent Hits -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-2xl font-bold">Browse all poems</h3>
+<button class="text-primary font-bold text-sm hover:underline tracking-widest uppercase">See All</button>
+</div>
+<!-- Bento Grid Layout for Browse All -->
+<div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+<!-- Large Featured Card -->
+<div class="md:col-span-4 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between group cursor-pointer border border-white/5 hover:bg-surface-container transition-colors relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
+<div>
+<span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold tracking-widest uppercase mb-4">Poem of the day</span>
+<h4 class="font-headline text-4xl font-bold text-white mb-6 leading-tight">The Unspoken <br/>Vows of the Sea</h4>
+<p class="text-on-surface-variant font-body text-lg max-w-md leading-relaxed">
+                            "Beneath the emerald crests where silence dwells, we found the rhythm of a thousand ghost stories told in salt..."
+                        </p>
+</div>
+<div class="mt-12 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Portrait of Julian Voss" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8GaHwB09zU7LpS9OSnyK5fzr97187xmHBxASsLMcCd4leDLazkn0cTdPm4rj0ieIV8l9QFHX2Lr8dNuERidTi0SwsGcV-Dkx1VjkXcaiGdQXbqeOdIPkGlxlU5PLnaq4k6WPb9HmcPsDyeCSnR7MVXsZbYjQ7CuGQKOqi11Oc_F12fodEkyYqNpQMkNtWSldsZik1_OhD5xBHV_68dcws5a2UyAbegObMNgvtHOnWGGj9jees_sU4AjoKgHmEUFiBxkDjv0FVxlFm"/>
+<span class="text-white font-semibold">Julian Voss</span>
+</div>
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-symbols-outlined fill" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Smaller Vertical Cards -->
+<div class="md:col-span-2 space-y-6">
+<div class="bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Minimalist lamp aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSD3lFuHl_XzH9lSgRI4mo4aryCuEZguhjk3siMIYxU1Zh_u-1V7TIPTMcWw9wxSjmENOPnHVRmb60B8oL23DzJnBiJgmpPdPvvLBttfPklT8bvLGVfu5EILCTNrrZKYzM8FLRQSejd6z9u75JE_194xuAR8rjvwkLMkGLzVBaQ0tgnS8YZXB8X35pgxzSup-w8s56gNckxZmsDjPpgUUp7tXorecByC94bIRiZMhltDJNePoqRdx0C1rD2F2gNhS9q1Pk5KZ06z0y"/>
+</div>
+<div>
+<h5 class="font-bold text-white line-clamp-1">Echoes in Gold</h5>
+<span class="text-xs text-on-surface-variant">S. Montgomery</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="favorite">favorite</span>
+</div>
+<div class="bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Abstract desert night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxE9Qk6OvgrkmmJX9-OgdNpuTg0LrBF_-zdpiGNW7-0I_y7-G7NgZ1DEzieFkjMiouzuP3kd-ip06zX4Q9SSqh1ELGZLktmGqwHnjz7MQ3RNXlMC3aOvhgtWQDoPB5_hD3_7f4NKa0cDvqBqnYSj4XOVysrnLm5zuAbVb-LRzNcMIY_N5t9rRNe6Enrl8l4Udc-c4jUheuO8PcRJ0gcSsIHeO4kgAsOWzTgr0b8V8-OYX62nf82Xm6IbD8btQsXWU3wf8yPG2kVkKz"/>
+</div>
+<div>
+<h5 class="font-bold text-white line-clamp-1">Midnight Ink</h5>
+<span class="text-xs text-on-surface-variant">Aria Chen</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="favorite">favorite</span>
+</div>
+<div class="bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Alpine mountains" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH37uJE6It7Yi6ii4bAT_kUYviMqssJa2R0ncnLw0dLNIJZgvSHsU7bF_yM4VgMsamijFRj1taf3l43sOW_7oDkFM521V_TaIwyj7nFwCiumYzk6O1yb-eGW_LM6R_DKsqJJajjage002DHA92MKsNmbiwNU0uToNQD0S4N09RGuGrQWqriw0aJ0cmHzw7g1qKUhiFApP_1m-9fpeqJFrb4bzokUf4Odaxb6DZb7eNIOmEJ907SaYHzRAuIEmOWHWEhNbZl1G4faTJ"/>
+</div>
+<div>
+<h5 class="font-bold text-white line-clamp-1">Peak of Solace</h5>
+<span class="text-xs text-on-surface-variant">Marcus Thorne</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="favorite">favorite</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-4 pb-8 px-6 bg-[#0e0e0e]/80 backdrop-blur-xl dark:bg-[#0e0e0e]/80 rounded-t-[3rem] shadow-[0_-8px_32px_rgba(255,255,255,0.05)]">
+<a class="flex flex-col items-center justify-center text-[#adaaaa] hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#57f47f] font-bold active:scale-110 duration-200 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-['Manrope'] text-[10px] font-bold tracking-widest uppercase mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#adaaaa] hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Your Library</span>
+</a>
+</nav>
+</body></html>

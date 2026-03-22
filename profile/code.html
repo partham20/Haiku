@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#ffffff",
+              "surface-container-low": "#131313",
+              "tertiary-fixed-dim": "#00d4ee",
+              "primary-container": "#0ec557",
+              "surface-dim": "#0e0e0e",
+              "on-secondary-container": "#e2ffe9",
+              "primary-dim": "#46e572",
+              "on-tertiary-fixed-variant": "#005763",
+              "background": "#0e0e0e",
+              "secondary-fixed-dim": "#6deca8",
+              "on-primary-fixed-variant": "#006227",
+              "on-primary-fixed": "#004218",
+              "outline": "#767575",
+              "on-background": "#ffffff",
+              "inverse-primary": "#006e2d",
+              "on-error-container": "#ffd2c8",
+              "tertiary-fixed": "#0fe3ff",
+              "primary-fixed-dim": "#46e572",
+              "surface-container-high": "#20201f",
+              "on-surface-variant": "#adaaaa",
+              "error-dim": "#d53d18",
+              "error": "#ff7351",
+              "surface-bright": "#2c2c2c",
+              "surface-variant": "#262626",
+              "surface": "#0e0e0e",
+              "surface-container-lowest": "#000000",
+              "on-primary": "#005722",
+              "tertiary-container": "#0fe3ff",
+              "tertiary-dim": "#00d4ee",
+              "on-tertiary-fixed": "#003840",
+              "on-tertiary-container": "#004d58",
+              "on-secondary-fixed-variant": "#006940",
+              "surface-tint": "#57f47f",
+              "secondary": "#7cfbb5",
+              "inverse-surface": "#fcf9f8",
+              "secondary-dim": "#6deca8",
+              "on-secondary-fixed": "#00492b",
+              "inverse-on-surface": "#565555",
+              "surface-container-highest": "#262626",
+              "on-secondary": "#005e39",
+              "surface-container": "#1a1a1a",
+              "on-primary-container": "#003411",
+              "secondary-fixed": "#7cfbb5",
+              "tertiary": "#88ebff",
+              "on-error": "#450900",
+              "outline-variant": "#484847",
+              "error-container": "#b92902",
+              "primary": "#57f47f",
+              "on-tertiary": "#005762",
+              "secondary-container": "#006d42",
+              "primary-fixed": "#57f47f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background: radial-gradient(at 0% 0%, rgba(87, 244, 127, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(0, 212, 238, 0.1) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#0e0e0e] dark:bg-[#0e0e0e] flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant/15">
+<img class="w-full h-full object-cover" data-alt="User profile photo avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwcJCT6OzD5yvUnv65cBuJ-yj6xtH-xvUrimJ7CG_qs7AerxrWSRjE1AAylu3o-cCMapghoNIS5Y4uUAXGu75KwdD67WJnMRn9eUVZ51Fl7O4pA4iT9kxQcdKayqVZQdl-WO5yAeI8tJnpDpvnDdro-HULZ5rbxXV31X8v4ya_-6CVO8b_qsMWsfE63WkVEyhm0r9Rwan6SfGjy7oRK2AqhP69dWQuWsRzfu5hzSpaPJKZi7ydY3Mb4krlTPeU5tMmkuNylftdYDrM"/>
+</div>
+<span class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-xl font-black text-white tracking-widest uppercase">The Velvet Anthology</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#57f47f] dark:text-[#57f47f] hover:bg-white/10 transition-colors p-2 rounded-full scale-95 active:duration-150" data-icon="settings">settings</button>
+</div>
+</nav>
+<main class="min-h-screen pt-24 pb-32 bg-mesh">
+<!-- Header Section (Spotify-Inspired) -->
+<header class="px-6 md:px-12 mb-16">
+<div class="flex flex-col md:flex-row items-end gap-8">
+<!-- Profile Image -->
+<div class="relative group">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-surface-container-highest transition-transform duration-500 hover:scale-[1.02]">
+<img class="w-full h-full object-cover" data-alt="Poet profile close up portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoLfT0Zd9tQEdLTsslgpnCU2XSKD2bq5NZM04AjWzsOLRAXYcyByYwEqjtk8meSIh9GiClfJ1-B3mseioiBTvyPjzkJDY87EfIoDaIGohqI0hCv7Lhq-Uwjcc195QJATiC6lbUs8eHYDVZpimhn3XzLCF8ZQ56yspO8Pndx27ZB73LkWXYSnB473YdU-_hKJXwXLYpKD1YV_YUFOrSp5Yi8GMuXv--4Ixf50AwUMH2ypZYvE9I8jOoC1X_OKmuPkjn_1NkjKLgu4Cp"/>
+</div>
+</div>
+<!-- Profile Info -->
+<div class="flex-1 space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label text-xs tracking-[0.2em] uppercase font-bold text-on-surface">Verified Poet</span>
+</div>
+<h1 class="font-headline text-5xl md:text-8xl font-extrabold tracking-tighter text-on-surface leading-none">Elara Vance</h1>
+<div class="flex flex-wrap items-center gap-6 mt-6">
+<div class="flex flex-col">
+<span class="font-headline text-2xl font-bold text-primary">142</span>
+<span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Published</span>
+</div>
+<div class="flex flex-col border-l border-outline-variant/20 pl-6">
+<span class="font-headline text-2xl font-bold text-on-surface">12.8K</span>
+<span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Followers</span>
+</div>
+<div class="flex flex-col border-l border-outline-variant/20 pl-6">
+<span class="font-headline text-2xl font-bold text-on-surface">492</span>
+<span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Following</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Profile Actions -->
+<div class="flex items-center gap-4 mt-10">
+<button class="bg-primary hover:bg-primary-dim text-on-primary px-8 py-3 rounded-full font-headline font-bold transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit</span>
+                    Edit Profile
+                </button>
+<button class="bg-transparent border border-outline-variant/30 hover:bg-white/5 text-on-surface px-8 py-3 rounded-full font-headline font-bold transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined">share</span>
+                    Share
+                </button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center border border-outline-variant/30 hover:bg-white/5 text-on-surface transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</header>
+<!-- Main Content Sections -->
+<div class="px-6 md:px-12 space-y-16">
+<!-- Your Poems Section (Bento Grid Style) -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline text-3xl font-bold tracking-tight">Your Poems</h2>
+<p class="text-on-surface-variant text-sm mt-1">Recent stanzas and published collections</p>
+</div>
+<button class="text-primary font-bold font-label text-xs tracking-widest uppercase hover:underline">Show All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Featured Large Poem -->
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-low p-10 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+</div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<span class="text-primary-dim font-label text-[10px] tracking-[0.3em] uppercase mb-4 block">Masterpiece</span>
+<h3 class="font-headline text-4xl font-extrabold mb-6 leading-tight">The Midnight Garden of Whispers</h3>
+<p class="text-on-surface-variant italic font-body text-lg leading-relaxed line-clamp-6">
+                                    In the silence of the velvet night, where the moonbeams weave a silver thread, I found the ghosts of blossoms past, rising from their earthen bed. They do not speak in words we know, but in the scent of rain on dust, a language written in the soul, in shadows we are forced to trust...
+                                </p>
+</div>
+<div class="mt-8 flex items-center justify-between">
+<span class="text-on-surface-variant text-sm font-label uppercase tracking-widest">Syllables: 412</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">favorite</span>
+<span class="material-symbols-outlined text-on-surface-variant">bookmark</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Smaller Poem Card -->
+<div class="bg-surface-container-high p-8 rounded-xl hover:bg-surface-bright transition-colors group">
+<h3 class="font-headline text-xl font-bold mb-4 group-hover:text-primary transition-colors">Echoes of Neon</h3>
+<p class="text-on-surface-variant text-sm line-clamp-4 font-body leading-relaxed">
+                            City lights like fractured glass, cutting through the heavy haze. We are ghosts in transit here...
+                        </p>
+<div class="mt-6 flex justify-between items-center opacity-60">
+<span class="text-[10px] font-label tracking-tighter">OCT 12, 2023</span>
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</div>
+</div>
+<!-- Another Small Card -->
+<div class="bg-surface-container-high p-8 rounded-xl hover:bg-surface-bright transition-colors group">
+<h3 class="font-headline text-xl font-bold mb-4 group-hover:text-primary transition-colors">Rust &amp; Reverie</h3>
+<p class="text-on-surface-variant text-sm line-clamp-4 font-body leading-relaxed">
+                            The iron gate forgets the key, but remembers the hand that turned it once in autumn...
+                        </p>
+<div class="mt-6 flex justify-between items-center opacity-60">
+<span class="text-[10px] font-label tracking-tighter">SEP 28, 2023</span>
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</div>
+</div>
+<!-- Horizontal "Quick Access" Card -->
+<div class="md:col-span-2 bg-surface-container-low px-8 py-6 rounded-xl flex items-center justify-between group hover:bg-surface-container-high transition-all">
+<div class="flex items-center gap-6">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<div>
+<h4 class="font-headline font-bold">Unpublished Drafts</h4>
+<p class="text-xs text-on-surface-variant">12 stanzas in progress</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+</div>
+</div>
+</section>
+<!-- Public Playlists Section -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline text-3xl font-bold tracking-tight">Public Playlists</h2>
+<p class="text-on-surface-variant text-sm mt-1">Curated poetic journeys</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+<!-- Playlist 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden mb-4 shadow-lg relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Dark aesthetic rainy window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUV3Y_E--lQPy0kmuB2ubBOwhd6piJZFvtZ-79gQMVxLCNGkS7XGUGDKJv3V0Mp1U_WopA45zPdfkcdB_Oqy9sVEbyaLLxKPdd-kFP4s1hfQHdi6JNlm8nHeaDv13mw3i5zkfqwiBxrWodBbywdRv9h6dckrHiHUEBQCc3xCd5wCEtH3jY1A4GONpFR3BGlRaAj0HLQD9VED7yV-FgEiu-imLglZzNfyFyynaSvQJzS07UG5nHBBtb7IPkdeH8PzRKQSQsoRywc9Zw"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<h4 class="font-headline font-bold truncate">Rainy Day Sonnets</h4>
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant mt-1">18 Poems • 42m</p>
+</div>
+<!-- Playlist 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden mb-4 shadow-lg relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Minimalist lamp and shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD67GA83AqFioW53hsAlrg5qEKQOaGTuXPDoW70XV4Q7zlR17UqjSvWBIb31-khPf-tOJ-8_2MC33Ic3tGHlbrjhpUVvGs7AorePm9zH9r8BknlxrZ0FHdDpiJF1GFV28Ax04c8OUkFZLObxhbW8w2uH-xdiqtphMXQYBmKTwIPhs-ecwR0Nu8oOlccJUCdw0-ibftyHBd5_o2jpFEtxnOZjl-rnEueSqpoGJLxc-UX0QcfahhfXKFYik6Zg_h1sW65JAQlgd943yO"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<h4 class="font-headline font-bold truncate">Midnight Monologues</h4>
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant mt-1">24 Poems • 1h 12m</p>
+</div>
+<!-- Playlist 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden mb-4 shadow-lg relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Antique paper and ink" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2_P32WK_NOcL4cffVyBg1KzPM1LkbTmy9PXbHvp82hdkK7ih25xObjkF3GFaKPha3jnrSfgZFfqy-yG33Is6IwYxEY_lzezZRhyOplx8c0qrCuPTQgRzpwbgAv7CzSWB7nPBxC8Ar_yK_E6fdf30C_uGM0LDJM6ZIl_IbNrmMiaMbRZpYeZe_LJd56kghkCIG2lWTkRC6_zi3KEJ8a1Hzzrdq_T2pn-0Mrs4XaE2W4Q2Wp0-mTDtutYV7T3w8S9iFoH3ymmfzHgV0"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<h4 class="font-headline font-bold truncate">Classical Reimagined</h4>
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant mt-1">12 Poems • 38m</p>
+</div>
+<!-- Playlist 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden mb-4 shadow-lg relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Coffee shop window blur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhcXCteWus76eV2A3FY95oUDneW1fiZVEnPrEeZ4EVNy16VO2tdkKfbJ6lHNQMSy8CaON77jRX68dgXsNER1-Tozxb-WJr5kImhSbwE3W18O4XDXrqiJl-nYqs5kLdGzKt1hh3e3MkFWqMrds5uwAby4Bk3RciEjpL3Al9RRjULdoew2XyzVOVmBP8lCZZJbj3AsXjjQ2zqtsfjYT6orILOcvuRQmHJEn-Pl8uHcWUQKjr5UFSyve9osDOKhBo9QzLU77xIz8HsVj9"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<h4 class="font-headline font-bold truncate">Urban Solitude</h4>
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant mt-1">31 Poems • 54m</p>
+</div>
+<!-- Create New Playlist -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-low border-2 border-dashed border-outline-variant/30 rounded-xl mb-4 flex flex-col items-center justify-center gap-4 hover:bg-surface-container-high hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary">add_circle</span>
+<span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant group-hover:text-on-surface">New Playlist</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl dark:bg-[#0e0e0e]/80 flex justify-around items-center pt-4 pb-8 px-6 rounded-t-[3rem] shadow-[0_-8px_32px_rgba(255,255,255,0.05)]">
+<a class="flex flex-col items-center justify-center text-[#adaaaa] hover:text-white transition-all active:scale-110 duration-200 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#adaaaa] hover:text-white transition-all active:scale-110 duration-200 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#57f47f] font-bold active:scale-110 duration-200 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="library_books" style="font-variation-settings: 'FILL' 1;">library_books</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Your Library</span>
+</a>
+</nav>
+</body></html>

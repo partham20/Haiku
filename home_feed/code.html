@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#ffffff",
+              "surface-container-low": "#131313",
+              "tertiary-fixed-dim": "#00d4ee",
+              "primary-container": "#0ec557",
+              "surface-dim": "#0e0e0e",
+              "on-secondary-container": "#e2ffe9",
+              "primary-dim": "#46e572",
+              "on-tertiary-fixed-variant": "#005763",
+              "background": "#0e0e0e",
+              "secondary-fixed-dim": "#6deca8",
+              "on-primary-fixed-variant": "#006227",
+              "on-primary-fixed": "#004218",
+              "outline": "#767575",
+              "on-background": "#ffffff",
+              "inverse-primary": "#006e2d",
+              "on-error-container": "#ffd2c8",
+              "tertiary-fixed": "#0fe3ff",
+              "primary-fixed-dim": "#46e572",
+              "surface-container-high": "#20201f",
+              "on-surface-variant": "#adaaaa",
+              "error-dim": "#d53d18",
+              "error": "#ff7351",
+              "surface-bright": "#2c2c2c",
+              "surface-variant": "#262626",
+              "surface": "#0e0e0e",
+              "surface-container-lowest": "#000000",
+              "on-primary": "#005722",
+              "tertiary-container": "#0fe3ff",
+              "tertiary-dim": "#00d4ee",
+              "on-tertiary-fixed": "#003840",
+              "on-tertiary-container": "#004d58",
+              "on-secondary-fixed-variant": "#006940",
+              "surface-tint": "#57f47f",
+              "secondary": "#7cfbb5",
+              "inverse-surface": "#fcf9f8",
+              "secondary-dim": "#6deca8",
+              "on-secondary-fixed": "#00492b",
+              "inverse-on-surface": "#565555",
+              "surface-container-highest": "#262626",
+              "on-secondary": "#005e39",
+              "surface-container": "#1a1a1a",
+              "on-primary-container": "#003411",
+              "secondary-fixed": "#7cfbb5",
+              "tertiary": "#88ebff",
+              "on-error": "#450900",
+              "outline-variant": "#484847",
+              "error-container": "#b92902",
+              "primary": "#57f47f",
+              "on-tertiary": "#005762",
+              "secondary-container": "#006d42",
+              "primary-fixed": "#57f47f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(38, 38, 38, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#0e0e0e] flex justify-between items-center w-full px-6 py-4 fixed top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a young woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtST6SwMbq3MN-KN95vvbMebISR_d0lO2IbJZo24RTq3lYyPS460TkXdhbmHu9H5Nf-6KSCLDO8NhOIhOwPu-2m3D_UsOMO4VMj3GHpEc8OXhwW3qaq_MWSyphl3cR8weZ4btwjnjXESNpEt9DcOK6dqw6ZbR7nB0vDwgZdHMzLx7gqTWyfhgEDzO7kaQGHWVQS3JQgUIQrK7umhd9d1kW8O2nzTFIo4vDm6zWdIbFMvi-pAHf6CZ2TTKDWyqKhDfIyGc_RRQIsId4"/>
+</div>
+<h1 class="text-xl font-black text-white tracking-widest uppercase font-['Plus_Jakarta_Sans']">The Velvet Anthology</h1>
+</div>
+<button class="hover:bg-white/10 transition-colors p-2 rounded-full active:scale-95 active:duration-150">
+<span class="material-symbols-outlined text-[#57f47f]">settings</span>
+</button>
+</header>
+<main class="pt-24 px-6 max-w-5xl mx-auto space-y-12">
+<!-- Hero Section: Your Daily Poem Mix -->
+<section class="space-y-6">
+<h2 class="font-headline font-bold text-3xl tracking-tight text-on-surface">Your Daily Poem Mix</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Large Featured Card -->
+<div class="group relative aspect-[4/5] md:aspect-square overflow-hidden rounded-xl bg-surface-container-low cursor-pointer">
+<img alt="Featured Collection" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Misty mountain range at dawn with green peaks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvcpz5kg5YKKleMEE1wyJ9EQQN5CciQ34JsDd1MBqanglqZgkFaqMFbOE-6krPn2lwWm5ULNdtsel7Iy9qVUQbWf--ITX1Gu6i9yS9R2FBFBeq7slYzKj-_YqLy6I6L0NrviCFHV14Y7praX6liB5BG5VGdD7WINJ2tSLVDVgNSB4gAdY8eD4Y25vkghjyEbw01rfNhdRPU8jczUk12UCKpowZtaYKgyj5lhpLPyZgPRgBMBGJr9Aio9slKXJDSLRnxoH8OZQWQWWa"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 space-y-2">
+<span class="font-label text-xs tracking-widest uppercase text-primary font-bold">Curated for You</span>
+<h3 class="font-headline font-extrabold text-4xl leading-none">The Obsidian<br/>Sonnet</h3>
+<p class="font-body text-on-surface-variant text-sm max-w-xs">A selection of modern dark romanticism curated by the editorial team.</p>
+</div>
+</div>
+<!-- Bento Style Grid for Smaller Items -->
+<div class="grid grid-cols-2 gap-4">
+<div class="relative rounded-xl overflow-hidden bg-surface-container-high group cursor-pointer">
+<img alt="Collection 2" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500" data-alt="Calm lake reflecting a sunset sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb94uzlf7mh4Vwl8TOI5BImo_vyCk5NBxJT6EhFYvNs7-KI1Zb8k4iCxvv0GeKIAO-s35P3_TIVe4JD33lx1VBy_foFoewDOD45PlcpHOjiJfkrZ5aC8K7LHMhmQe3gNydhMbrImBDB20UIPw-N6uQ8fS-QHZ3nr90DK_DEDL2yxNDGLJWPa0e07sY70UT1akd3hYJqqFoSTZ3JydYmp0CNYLZdzvVvPl1Fcavpx5wqKy1Os5cJHq1LzvT-JWSbM-rnhA83511fC-L"/>
+<div class="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-black/80 to-transparent">
+<h4 class="font-headline font-bold text-lg">Neon Haikus</h4>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden bg-surface-container-high group cursor-pointer">
+<img alt="Collection 3" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500" data-alt="Abstract golden patterns on dark water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3sqmOTg-3nNi-rHLR_awJlPfVu53YTuyAOyn201S133jo7TsRj3wsjcoKxxI5kHj1Z7y4-1R9xPpWO-p7AbpvvF4nxTOFnM6akkW3SGXC0WNVk4i3L5506nFNUJTZ2_YBd9Nl3UoT2mV_2ye2x_QFEUF0In0WaHrtfBmr81RfyvYGk0EKjCdQ6zMiD1pGqbKW9GnfxNHbX7PMLU0oI3F0q-OPPdhF5WKxuqIBfRlpopWPMuy2k-E12Ga4EO8JyE4tY8biSsikNbFt"/>
+<div class="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-black/80 to-transparent">
+<h4 class="font-headline font-bold text-lg">Wired Verses</h4>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden bg-surface-container-high group cursor-pointer col-span-2">
+<img alt="Collection 4" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-500" data-alt="Close up of a single green leaf with dew" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu2_R3GbG8-n20w8BS6G1HXonQ-3GCnwZptU-HAWdgzG7WlZ7QZc_iBG1vms_SxZLgalyjiskRXanXhCCpO5yztGZooB6L42iryYtGAoT8XpgPpIkXcbKu5Z7gDE0WdDZCb0hkXlUtVTzl-0GHljfwcUn-qH5eXngVR7zr70yXFtavtzoq06tkQKEZ73OQRiSb9VGaiW7dyl8vMfRRxvIMOX8cRL8ygCZfqEg9pPqzwyvxemqifJbduzJYBjkH5FUB_Wh_7W-UTbOB"/>
+<div class="absolute inset-0 flex items-center justify-between px-6 bg-gradient-to-r from-black/60 to-transparent">
+<div>
+<h4 class="font-headline font-bold text-xl">The Forest Mind</h4>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-widest">New Episode</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trending in Haiku: Horizontal Scroll -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="font-headline font-bold text-2xl tracking-tight text-on-surface">Trending in Haiku</h2>
+<button class="text-primary font-label text-xs uppercase tracking-widest hover:underline">See All</button>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar">
+<!-- Haiku Card 1 -->
+<div class="min-w-[280px] bg-surface-container-low rounded-xl p-8 space-y-4 border border-outline-variant/10">
+<div class="space-y-1">
+<p class="font-body text-on-surface text-lg leading-relaxed">Silver moon hangs high,</p>
+<p class="font-body text-on-surface text-lg leading-relaxed">Whispers in the velvet dark,</p>
+<p class="font-body text-on-surface text-lg leading-relaxed">Shadows dance alone.</p>
+</div>
+<div class="pt-4 flex items-center justify-between border-t border-outline-variant/15">
+<span class="text-on-surface-variant text-xs font-label">@luna_poetica</span>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span class="text-[10px] font-bold">1.2k</span>
+</div>
+</div>
+</div>
+<!-- Haiku Card 2 -->
+<div class="min-w-[280px] bg-surface-container-low rounded-xl p-8 space-y-4 border border-outline-variant/10">
+<div class="space-y-1">
+<p class="font-body text-on-surface text-lg leading-relaxed">Autumn leaf descends,</p>
+<p class="font-body text-on-surface text-lg leading-relaxed">Gold upon the asphalt gray,</p>
+<p class="font-body text-on-surface text-lg leading-relaxed">Winter breathes its name.</p>
+</div>
+<div class="pt-4 flex items-center justify-between border-t border-outline-variant/15">
+<span class="text-on-surface-variant text-xs font-label">@frost_writer</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span class="text-[10px] font-bold">842</span>
+</div>
+</div>
+</div>
+<!-- Haiku Card 3 -->
+<div class="min-w-[280px] bg-surface-container-low rounded-xl p-8 space-y-4 border border-outline-variant/10">
+<div class="space-y-1">
+<p class="font-body text-on-surface text-lg leading-relaxed">Digital signals,</p>
+<p class="font-body text-on-surface text-lg leading-relaxed">Glow within the silent room,</p>
+<p class="font-body text-on-surface text-lg leading-relaxed">Heartbeat in the code.</p>
+</div>
+<div class="pt-4 flex items-center justify-between border-t border-outline-variant/15">
+<span class="text-on-surface-variant text-xs font-label">@cyber_scribe</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span class="text-[10px] font-bold">503</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Vertical Feed: New from Poets You Follow -->
+<section class="space-y-8">
+<h2 class="font-headline font-bold text-2xl tracking-tight text-on-surface">New from Poets You Follow</h2>
+<div class="space-y-12">
+<!-- Poem Card 1 -->
+<article class="group">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="w-full md:w-1/3 aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-high">
+<img alt="Poem context" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Architecture of a modern concrete building against sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZxjZH_sLNe-tj7XF2dgGUVEmStX_RI9ZHp88CONeyeU8SvZQ7ib69-TIMMJ58hltIJ7SbTUpClnuOaCUtTYVsSVapzMtlD1Bt3-r1q7I79J5AZmfjD8BeRANcaIMMrvlqAhV9rxHfH6YnSYZ9B6QKWGHkPDDdQIsakYwo_byJSENu6fvrjQYGh80I__1gv98VdUyDDbsGcOQqYOYofC9B8tVyzYYB97LgluWB6DOWOs-pnWaJsVzJdqNgb6SKEs4jtibqzKSewnYT"/>
+</div>
+<div class="flex-1 space-y-6">
+<div class="space-y-2">
+<h3 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface">Geometric Solace</h3>
+<div class="flex items-center gap-2">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-primary font-bold">Elias Thorne</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-on-surface-variant text-xs font-label">4 MIN READ</span>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-body text-on-surface-variant text-xl italic leading-relaxed">
+                                    "The concrete does not ask for forgiveness,<br/>
+                                    it simply stands, a brutalist anchor in a fluid world..."
+                                </p>
+<p class="font-body text-on-surface-variant/70 text-base leading-relaxed line-clamp-2">
+                                    We find our edges where the light breaks against the stone. There is a certain kind of peace in the straight lines that the wind cannot bend.
+                                </p>
+</div>
+<div class="flex items-center gap-6 pt-4">
+<button class="flex items-center gap-2 text-on-surface group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label text-sm uppercase tracking-widest">2.4k</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label text-sm uppercase tracking-widest">128</span>
+</button>
+<button class="ml-auto text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Separation logic using tonal shift instead of lines -->
+<div class="h-px w-full bg-gradient-to-r from-transparent via-surface-container-high to-transparent"></div>
+<!-- Poem Card 2 -->
+<article class="group">
+<div class="flex flex-col md:flex-row-reverse gap-8 items-start">
+<div class="w-full md:w-1/3 aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-high">
+<img alt="Poem context 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Waves crashing on a sandy beach at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDitsLl7j8u5lgpEIghA9kH5tsuAzq-xZm-AJCZNytBSPBS71mdO7E3HqSPf8IRWMH2uZFsuJUoxniC3VULu-8iDl05MiaBs81raCPxbPyruJPJjntaclLnjZH6Jw8mx01dMYZYqkKCkhkqjrrl3fnUX2hy0l2XGTRsgm0_Pj1xKh7XpD_-yG1FKfP_0yfAbdenLHX7ZTJloM4PyIr9dY1t0Dl_F4Ekk3cMjUfudl0QIkHdnewg5pOqZx-KHTJHRSBdkxlmOTgry31"/>
+</div>
+<div class="flex-1 space-y-6">
+<div class="space-y-2">
+<h3 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface">Tide &amp; Memory</h3>
+<div class="flex items-center gap-2">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-primary font-bold">Sarah Vance</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-on-surface-variant text-xs font-label">2 MIN READ</span>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-body text-on-surface-variant text-xl italic leading-relaxed">
+                                    "The ocean pulls the secrets from the sand,<br/>
+                                    every wave a persistent erasure of who we were..."
+                                </p>
+<p class="font-body text-on-surface-variant/70 text-base leading-relaxed line-clamp-2">
+                                    There is no sound quite like the receding water, taking back the small shells and the memories we left by the shoreline.
+                                </p>
+</div>
+<div class="flex items-center gap-6 pt-4">
+<button class="flex items-center gap-2 text-on-surface group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label text-sm uppercase tracking-widest">1.8k</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label text-sm uppercase tracking-widest">94</span>
+</button>
+<button class="mr-auto md:mr-0 md:ml-auto text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Floating Playback Bar (Audio Poetry) -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] max-w-md glass-panel rounded-lg px-6 py-3 flex items-center gap-4 z-40 border border-white/5">
+<div class="w-10 h-10 rounded-md overflow-hidden bg-primary flex-shrink-0">
+<img alt="Now Playing" class="w-full h-full object-cover" data-alt="Abstract vibrant green and black texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1jFNSqOKTRwBr41_FXlm0ifj8b8weRXk5vN7fPURO9AAGL6ZsP2OqysORG_fEDKf1wy6wgdgP4lK-hzU4uagz1oGA-uT34pyb9-95HAr_n7pmw9hDHW1GIrRJGbAANFopAIofyAQ67hWHI7Asu1a5TdASX00q8aXzzJChoh2db8kpSpgr6lDYsqMqeetjIt-WuTty2N_hMm7yRW5iu3bH3FjuI437iHE3jpOrC0JtfkyXd6PnM8fR2JA21QSraNzvC2Un2PbgESCa"/>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-white text-sm font-bold truncate">Ethereal Echoes</h5>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest">Voice: Julian V.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<button class="text-white/40">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-4 pb-8 px-6 bg-[#0e0e0e]/80 backdrop-blur-xl rounded-t-[3rem] shadow-[0_-8px_32px_rgba(255,255,255,0.05)]">
+<a class="flex flex-col items-center justify-center text-[#57f47f] font-bold transition-all hover:text-white group" href="#">
+<span class="material-symbols-outlined group-active:scale-110 duration-200 ease-out" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#adaaaa] transition-all hover:text-white group" href="#">
+<span class="material-symbols-outlined group-active:scale-110 duration-200 ease-out">search</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#adaaaa] transition-all hover:text-white group" href="#">
+<span class="material-symbols-outlined group-active:scale-110 duration-200 ease-out">library_books</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Your Library</span>
+</a>
+</nav>
+</body></html>
