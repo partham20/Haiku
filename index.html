@@ -2,8 +2,8 @@
 <html class="dark" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Velvet Anthology</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Haiku</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
@@ -15,1091 +15,872 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        "on-surface": "#ffffff",
-        "surface-container-low": "#131313",
-        "tertiary-fixed-dim": "#00d4ee",
-        "primary-container": "#0ec557",
-        "surface-dim": "#0e0e0e",
-        "on-secondary-container": "#e2ffe9",
-        "primary-dim": "#46e572",
-        "on-tertiary-fixed-variant": "#005763",
-        "background": "#0e0e0e",
-        "secondary-fixed-dim": "#6deca8",
-        "on-primary-fixed-variant": "#006227",
-        "on-primary-fixed": "#004218",
-        "outline": "#767575",
-        "on-background": "#ffffff",
-        "inverse-primary": "#006e2d",
-        "on-error-container": "#ffd2c8",
-        "tertiary-fixed": "#0fe3ff",
-        "primary-fixed-dim": "#46e572",
-        "surface-container-high": "#20201f",
-        "on-surface-variant": "#adaaaa",
-        "error-dim": "#d53d18",
-        "error": "#ff7351",
-        "surface-bright": "#2c2c2c",
-        "surface-variant": "#262626",
-        "surface": "#0e0e0e",
-        "surface-container-lowest": "#000000",
-        "on-primary": "#005722",
-        "tertiary-container": "#0fe3ff",
-        "tertiary-dim": "#00d4ee",
-        "on-tertiary-fixed": "#003840",
-        "on-tertiary-container": "#004d58",
-        "on-secondary-fixed-variant": "#006940",
-        "surface-tint": "#57f47f",
-        "secondary": "#7cfbb5",
-        "inverse-surface": "#fcf9f8",
-        "secondary-dim": "#6deca8",
-        "on-secondary-fixed": "#00492b",
-        "inverse-on-surface": "#565555",
-        "surface-container-highest": "#262626",
-        "on-secondary": "#005e39",
-        "surface-container": "#1a1a1a",
-        "on-primary-container": "#003411",
-        "secondary-fixed": "#7cfbb5",
-        "tertiary": "#88ebff",
-        "on-error": "#450900",
-        "outline-variant": "#484847",
-        "error-container": "#b92902",
-        "primary": "#57f47f",
-        "on-tertiary": "#005762",
-        "secondary-container": "#006d42",
-        "primary-fixed": "#57f47f"
+        "on-surface":"#ffffff","surface-container-low":"#131313","primary-container":"#0ec557",
+        "surface-dim":"#0e0e0e","primary-dim":"#46e572","background":"#0e0e0e",
+        "outline":"#767575","on-background":"#ffffff","surface-container-high":"#20201f",
+        "on-surface-variant":"#adaaaa","error":"#ff7351","surface-bright":"#2c2c2c",
+        "surface-variant":"#262626","surface":"#0e0e0e","surface-container-lowest":"#000000",
+        "on-primary":"#005722","surface-tint":"#57f47f","secondary":"#7cfbb5",
+        "surface-container-highest":"#262626","surface-container":"#1a1a1a",
+        "primary":"#57f47f","outline-variant":"#484847","primary-fixed":"#57f47f",
+        "on-secondary":"#005e39","tertiary":"#88ebff","tertiary-dim":"#00d4ee",
+        "on-error":"#450900","error-container":"#b92902","inverse-primary":"#006e2d",
+        "on-secondary-container":"#e2ffe9","secondary-container":"#006d42"
       },
       fontFamily: {
-        "headline": ["Plus Jakarta Sans"],
-        "body": ["Manrope"],
-        "label": ["Manrope"]
+        headline:["Plus Jakarta Sans"],body:["Manrope"],label:["Manrope"]
       },
-      borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
-    },
-  },
-}
+      borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"}
+    }
+  }
+};
 </script>
 <style>
-body {
-  background-color: #0e0e0e;
-  color: #ffffff;
-  font-family: 'Manrope', sans-serif;
-  min-height: 100dvh;
-  overflow-x: hidden;
-}
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-.glass-panel {
-  background: rgba(38, 38, 38, 0.6);
-  backdrop-filter: blur(20px);
-}
-.hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-.bg-mesh {
-  background: radial-gradient(at 0% 0%, rgba(87, 244, 127, 0.15) 0px, transparent 50%),
-              radial-gradient(at 100% 0%, rgba(0, 212, 238, 0.1) 0px, transparent 50%);
-}
-
-/* Screen transitions */
-.screen { display: none; }
-.screen.active { display: block; animation: fadeIn 0.3s ease; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* Poem view overlay */
-#poem-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  overflow-y: auto;
-  display: none;
-}
-#poem-screen.active {
-  display: block;
-  animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-@keyframes slideUp {
-  from { transform: translateY(100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* Progress bar interaction */
-.progress-track { cursor: pointer; }
-.progress-track:hover .progress-knob { opacity: 1; }
+body{background:#0e0e0e;color:#fff;font-family:'Manrope',sans-serif;min-height:100dvh;overflow-x:hidden}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.filled{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24}
+.glass-panel{background:rgba(38,38,38,0.6);backdrop-filter:blur(20px)}
+.hide-scrollbar::-webkit-scrollbar{display:none}
+.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+.page{display:none}.page.active{display:block}
+.fade-in{animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseHeart{0%{transform:scale(1)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
+.heart-pop{animation:pulseHeart .3s ease}
+.modal-overlay{background:rgba(0,0,0,.7);backdrop-filter:blur(8px)}
+textarea:focus,input:focus{outline:none}
+.bg-mesh{background:radial-gradient(at 0% 0%,rgba(87,244,127,.12) 0px,transparent 50%),radial-gradient(at 100% 0%,rgba(0,212,238,.08) 0px,transparent 50%)}
+.ghost-border{border:1px solid rgba(72,72,71,.15)}
 </style>
 </head>
 <body class="bg-background text-on-background">
 
-<!-- ===================== TOP APP BAR ===================== -->
-<header id="main-header" class="bg-[#0e0e0e] flex justify-between items-center w-full px-6 py-4 fixed top-0 z-50">
-  <div class="flex items-center gap-4">
-    <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-primary/20">
-      <img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtST6SwMbq3MN-KN95vvbMebISR_d0lO2IbJZo24RTq3lYyPS460TkXdhbmHu9H5Nf-6KSCLDO8NhOIhOwPu-2m3D_UsOMO4VMj3GHpEc8OXhwW3qaq_MWSyphl3cR8weZ4btwjnjXESNpEt9DcOK6dqw6ZbR7nB0vDwgZdHMzLx7gqTWyfhgEDzO7kaQGHWVQS3JQgUIQrK7umhd9d1kW8O2nzTFIo4vDm6zWdIbFMvi-pAHf6CZ2TTKDWyqKhDfIyGc_RRQIsId4"/>
+<!-- ==================== AUTH SCREEN ==================== -->
+<div id="auth-screen" class="min-h-screen flex flex-col items-center justify-center px-6">
+  <div class="w-full max-w-sm space-y-10 fade-in">
+    <div class="text-center space-y-4">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-container/10 mb-2">
+        <span class="material-symbols-outlined text-primary text-4xl filled">auto_stories</span>
+      </div>
+      <h1 class="text-4xl font-black tracking-widest uppercase font-headline text-white">Haiku</h1>
+      <p class="text-on-surface-variant text-sm font-body">A sanctuary for poets</p>
     </div>
-    <h1 class="text-xl font-black text-white tracking-widest uppercase font-['Plus_Jakarta_Sans']">The Velvet Anthology</h1>
+    <!-- Login -->
+    <div id="login-form" class="space-y-5">
+      <div class="space-y-3">
+        <input id="login-username" type="text" placeholder="Username" class="w-full bg-surface-container-high border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-on-surface-variant font-body focus:ring-2 focus:ring-primary/50"/>
+        <input id="login-password" type="password" placeholder="Password" class="w-full bg-surface-container-high border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-on-surface-variant font-body focus:ring-2 focus:ring-primary/50"/>
+      </div>
+      <div id="login-error" class="text-error text-sm text-center hidden"></div>
+      <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 rounded-full font-headline font-bold text-lg tracking-wide active:scale-95 transition-transform">Sign In</button>
+      <p class="text-center text-on-surface-variant text-sm">Don't have an account? <button onclick="showSignup()" class="text-primary font-bold hover:underline">Sign Up</button></p>
+    </div>
+    <!-- Signup -->
+    <div id="signup-form" class="space-y-5 hidden">
+      <div class="space-y-3">
+        <input id="signup-displayname" type="text" placeholder="Display Name" class="w-full bg-surface-container-high border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-on-surface-variant font-body focus:ring-2 focus:ring-primary/50"/>
+        <input id="signup-username" type="text" placeholder="Username" class="w-full bg-surface-container-high border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-on-surface-variant font-body focus:ring-2 focus:ring-primary/50"/>
+        <input id="signup-password" type="password" placeholder="Password" class="w-full bg-surface-container-high border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-on-surface-variant font-body focus:ring-2 focus:ring-primary/50"/>
+      </div>
+      <div id="signup-error" class="text-error text-sm text-center hidden"></div>
+      <button onclick="handleSignup()" class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 rounded-full font-headline font-bold text-lg tracking-wide active:scale-95 transition-transform">Create Account</button>
+      <p class="text-center text-on-surface-variant text-sm">Already have an account? <button onclick="showLogin()" class="text-primary font-bold hover:underline">Sign In</button></p>
+    </div>
   </div>
-  <button class="hover:bg-white/10 transition-colors p-2 rounded-full active:scale-95 active:duration-150">
-    <span class="material-symbols-outlined text-primary">settings</span>
+</div>
+
+<!-- ==================== APP SHELL ==================== -->
+<div id="app-shell" class="hidden">
+
+<!-- Top App Bar -->
+<header class="bg-[#0e0e0e] flex justify-between items-center w-full px-6 py-4 fixed top-0 z-50">
+  <div class="flex items-center gap-4">
+    <div id="header-avatar" onclick="navigateTo('profile')" class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-primary/20 flex items-center justify-center text-primary font-bold text-sm font-headline cursor-pointer"></div>
+    <h1 class="text-xl font-black text-white tracking-widest uppercase font-headline">Haiku</h1>
+  </div>
+  <button onclick="handleLogout()" class="hover:bg-white/10 transition-colors p-2 rounded-full active:scale-95" title="Sign out">
+    <span class="material-symbols-outlined text-primary">logout</span>
   </button>
 </header>
 
-
-<!-- ===================== HOME SCREEN ===================== -->
-<div id="home-screen" class="screen active">
-<main class="pt-24 px-6 max-w-5xl mx-auto space-y-12 pb-40">
+<!-- ==================== HOME FEED ==================== -->
+<div id="page-home" class="page pt-24 pb-32 px-6 max-w-5xl mx-auto">
+<div class="fade-in space-y-12">
 
   <!-- Hero: Your Daily Poem Mix -->
   <section class="space-y-6">
     <h2 class="font-headline font-bold text-3xl tracking-tight text-on-surface">Your Daily Poem Mix</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div onclick="openPoem('obsidian')" class="group relative aspect-[4/5] md:aspect-square overflow-hidden rounded-xl bg-surface-container-low cursor-pointer">
-        <img alt="Featured Collection" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvcpz5kg5YKKleMEE1wyJ9EQQN5CciQ34JsDd1MBqanglqZgkFaqMFbOE-6krPn2lwWm5ULNdtsel7Iy9qVUQbWf--ITX1Gu6i9yS9R2FBFBeq7slYzKj-_YqLy6I6L0NrviCFHV14Y7praX6liB5BG5VGdD7WINJ2tSLVDVgNSB4gAdY8eD4Y25vkghjyEbw01rfNhdRPU8jczUk12UCKpowZtaYKgyj5lhpLPyZgPRgBMBGJr9Aio9slKXJDSLRnxoH8OZQWQWWa"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 p-8 space-y-2">
-          <span class="font-label text-xs tracking-widest uppercase text-primary font-bold">Curated for You</span>
-          <h3 class="font-headline font-extrabold text-4xl leading-none">The Obsidian<br/>Sonnet</h3>
-          <p class="font-body text-on-surface-variant text-sm max-w-xs">A selection of modern dark romanticism curated by the editorial team.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div onclick="openPoem('neon-haiku')" class="relative rounded-xl overflow-hidden bg-surface-container-high group cursor-pointer">
-          <img alt="Collection 2" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb94uzlf7mh4Vwl8TOI5BImo_vyCk5NBxJT6EhFYvNs7-KI1Zb8k4iCxvv0GeKIAO-s35P3_TIVe4JD33lx1VBy_foFoewDOD45PlcpHOjiJfkrZ5aC8K7LHMhmQe3gNydhMbrImBDB20UIPw-N6uQ8fS-QHZ3nr90DK_DEDL2yxNDGLJWPa0e07sY70UT1akd3hYJqqFoSTZ3JydYmp0CNYLZdzvVvPl1Fcavpx5wqKy1Os5cJHq1LzvT-JWSbM-rnhA83511fC-L"/>
-          <div class="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-black/80 to-transparent">
-            <h4 class="font-headline font-bold text-lg">Neon Haikus</h4>
-          </div>
-        </div>
-        <div onclick="openPoem('wired')" class="relative rounded-xl overflow-hidden bg-surface-container-high group cursor-pointer">
-          <img alt="Collection 3" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3sqmOTg-3nNi-rHLR_awJlPfVu53YTuyAOyn201S133jo7TsRj3wsjcoKxxI5kHj1Z7y4-1R9xPpWO-p7AbpvvF4nxTOFnM6akkW3SGXC0WNVk4i3L5506nFNUJTZ2_YBd9Nl3UoT2mV_2ye2x_QFEUF0In0WaHrtfBmr81RfyvYGk0EKjCdQ6zMiD1pGqbKW9GnfxNHbX7PMLU0oI3F0q-OPPdhF5WKxuqIBfRlpopWPMuy2k-E12Ga4EO8JyE4tY8biSsikNbFt"/>
-          <div class="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-black/80 to-transparent">
-            <h4 class="font-headline font-bold text-lg">Wired Verses</h4>
-          </div>
-        </div>
-        <div onclick="playTrack('forest')" class="relative rounded-xl overflow-hidden bg-surface-container-high group cursor-pointer col-span-2">
-          <img alt="Collection 4" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu2_R3GbG8-n20w8BS6G1HXonQ-3GCnwZptU-HAWdgzG7WlZ7QZc_iBG1vms_SxZLgalyjiskRXanXhCCpO5yztGZooB6L42iryYtGAoT8XpgPpIkXcbKu5Z7gDE0WdDZCb0hkXlUtVTzl-0GHljfwcUn-qH5eXngVR7zr70yXFtavtzoq06tkQKEZ73OQRiSb9VGaiW7dyl8vMfRRxvIMOX8cRL8ygCZfqEg9pPqzwyvxemqifJbduzJYBjkH5FUB_Wh_7W-UTbOB"/>
-          <div class="absolute inset-0 flex items-center justify-between px-6 bg-gradient-to-r from-black/60 to-transparent">
-            <div>
-              <h4 class="font-headline font-bold text-xl">The Forest Mind</h4>
-              <p class="text-xs text-on-surface-variant font-label uppercase tracking-widest">New Episode</p>
-            </div>
-            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
-              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="hero-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Large Featured Card (dynamic) -->
+      <div id="hero-featured" class="group relative aspect-[4/5] md:aspect-square overflow-hidden rounded-xl cursor-pointer"></div>
+      <!-- Bento sub-grid -->
+      <div id="hero-bento" class="grid grid-cols-2 gap-4"></div>
     </div>
   </section>
 
-  <!-- Trending in Haiku -->
+  <!-- Trending in Haiku: Horizontal Scroll -->
   <section class="space-y-6">
     <div class="flex justify-between items-end">
       <h2 class="font-headline font-bold text-2xl tracking-tight text-on-surface">Trending in Haiku</h2>
-      <button class="text-primary font-label text-xs uppercase tracking-widest hover:underline">See All</button>
+      <button onclick="navigateTo('explore')" class="text-primary font-label text-xs uppercase tracking-widest hover:underline">See All</button>
     </div>
-    <div class="flex gap-6 overflow-x-auto pb-4 hide-scrollbar">
-      <div onclick="openPoem('moon')" class="min-w-[280px] bg-surface-container-low rounded-xl p-8 space-y-4 border border-outline-variant/10 cursor-pointer hover:bg-surface-container transition-colors">
-        <div class="space-y-1">
-          <p class="font-body text-on-surface text-lg leading-relaxed">Silver moon hangs high,</p>
-          <p class="font-body text-on-surface text-lg leading-relaxed">Whispers in the velvet dark,</p>
-          <p class="font-body text-on-surface text-lg leading-relaxed">Shadows dance alone.</p>
-        </div>
-        <div class="pt-4 flex items-center justify-between border-t border-outline-variant/15">
-          <span class="text-on-surface-variant text-xs font-label">@luna_poetica</span>
-          <div class="flex items-center gap-1 text-primary">
-            <span class="material-symbols-outlined text-sm">favorite</span>
-            <span class="text-[10px] font-bold">1.2k</span>
-          </div>
-        </div>
-      </div>
-      <div onclick="openPoem('autumn')" class="min-w-[280px] bg-surface-container-low rounded-xl p-8 space-y-4 border border-outline-variant/10 cursor-pointer hover:bg-surface-container transition-colors">
-        <div class="space-y-1">
-          <p class="font-body text-on-surface text-lg leading-relaxed">Autumn leaf descends,</p>
-          <p class="font-body text-on-surface text-lg leading-relaxed">Gold upon the asphalt gray,</p>
-          <p class="font-body text-on-surface text-lg leading-relaxed">Winter breathes its name.</p>
-        </div>
-        <div class="pt-4 flex items-center justify-between border-t border-outline-variant/15">
-          <span class="text-on-surface-variant text-xs font-label">@frost_writer</span>
-          <div class="flex items-center gap-1 text-on-surface-variant">
-            <span class="material-symbols-outlined text-sm">favorite</span>
-            <span class="text-[10px] font-bold">842</span>
-          </div>
-        </div>
-      </div>
-      <div onclick="openPoem('digital')" class="min-w-[280px] bg-surface-container-low rounded-xl p-8 space-y-4 border border-outline-variant/10 cursor-pointer hover:bg-surface-container transition-colors">
-        <div class="space-y-1">
-          <p class="font-body text-on-surface text-lg leading-relaxed">Digital signals,</p>
-          <p class="font-body text-on-surface text-lg leading-relaxed">Glow within the silent room,</p>
-          <p class="font-body text-on-surface text-lg leading-relaxed">Heartbeat in the code.</p>
-        </div>
-        <div class="pt-4 flex items-center justify-between border-t border-outline-variant/15">
-          <span class="text-on-surface-variant text-xs font-label">@cyber_scribe</span>
-          <div class="flex items-center gap-1 text-on-surface-variant">
-            <span class="material-symbols-outlined text-sm">favorite</span>
-            <span class="text-[10px] font-bold">503</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="trending-scroll" class="flex gap-5 overflow-x-auto pb-4 hide-scrollbar"></div>
   </section>
 
-  <!-- New from Poets You Follow -->
+  <!-- New from Poets: Vertical Feed -->
   <section class="space-y-8">
     <h2 class="font-headline font-bold text-2xl tracking-tight text-on-surface">New from Poets You Follow</h2>
-    <div class="space-y-12">
-      <article onclick="openPoem('geometric')" class="group cursor-pointer">
-        <div class="flex flex-col md:flex-row gap-8 items-start">
-          <div class="w-full md:w-1/3 aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-high">
-            <img alt="Poem context" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZxjZH_sLNe-tj7XF2dgGUVEmStX_RI9ZHp88CONeyeU8SvZQ7ib69-TIMMJ58hltIJ7SbTUpClnuOaCUtTYVsSVapzMtlD1Bt3-r1q7I79J5AZmfjD8BeRANcaIMMrvlqAhV9rxHfH6YnSYZ9B6QKWGHkPDDdQIsakYwo_byJSENu6fvrjQYGh80I__1gv98VdUyDDbsGcOQqYOYofC9B8tVyzYYB97LgluWB6DOWOs-pnWaJsVzJdqNgb6SKEs4jtibqzKSewnYT"/>
-          </div>
-          <div class="flex-1 space-y-6">
-            <div class="space-y-2">
-              <h3 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface">Geometric Solace</h3>
-              <div class="flex items-center gap-2">
-                <span class="font-label text-xs uppercase tracking-[0.2em] text-primary font-bold">Elias Thorne</span>
-                <span class="w-1 h-1 rounded-full bg-outline-variant"></span>
-                <span class="text-on-surface-variant text-xs font-label">4 MIN READ</span>
-              </div>
-            </div>
-            <div class="space-y-4">
-              <p class="font-body text-on-surface-variant text-xl italic leading-relaxed">
-                "The concrete does not ask for forgiveness,<br/>
-                it simply stands, a brutalist anchor in a fluid world..."
-              </p>
-              <p class="font-body text-on-surface-variant/70 text-base leading-relaxed line-clamp-2">
-                We find our edges where the light breaks against the stone. There is a certain kind of peace in the straight lines that the wind cannot bend.
-              </p>
-            </div>
-            <div class="flex items-center gap-6 pt-4">
-              <button onclick="event.stopPropagation(); toggleLike(this)" class="flex items-center gap-2 text-on-surface group-hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">favorite</span>
-                <span class="font-label text-sm uppercase tracking-widest">2.4k</span>
-              </button>
-              <button onclick="event.stopPropagation()" class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors">
-                <span class="material-symbols-outlined">chat_bubble</span>
-                <span class="font-label text-sm uppercase tracking-widest">128</span>
-              </button>
-              <button onclick="event.stopPropagation()" class="ml-auto text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">share</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <div class="h-px w-full bg-gradient-to-r from-transparent via-surface-container-high to-transparent"></div>
-
-      <article onclick="openPoem('tide')" class="group cursor-pointer">
-        <div class="flex flex-col md:flex-row-reverse gap-8 items-start">
-          <div class="w-full md:w-1/3 aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-high">
-            <img alt="Poem context 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDitsLl7j8u5lgpEIghA9kH5tsuAzq-xZm-AJCZNytBSPBS71mdO7E3HqSPf8IRWMH2uZFsuJUoxniC3VULu-8iDl05MiaBs81raCPxbPyruJPJjntaclLnjZH6Jw8mx01dMYZYqkKCkhkqjrrl3fnUX2hy0l2XGTRsgm0_Pj1xKh7XpD_-yG1FKfP_0yfAbdenLHX7ZTJloM4PyIr9dY1t0Dl_F4Ekk3cMjUfudl0QIkHdnewg5pOqZx-KHTJHRSBdkxlmOTgry31"/>
-          </div>
-          <div class="flex-1 space-y-6">
-            <div class="space-y-2">
-              <h3 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface">Tide &amp; Memory</h3>
-              <div class="flex items-center gap-2">
-                <span class="font-label text-xs uppercase tracking-[0.2em] text-primary font-bold">Sarah Vance</span>
-                <span class="w-1 h-1 rounded-full bg-outline-variant"></span>
-                <span class="text-on-surface-variant text-xs font-label">2 MIN READ</span>
-              </div>
-            </div>
-            <div class="space-y-4">
-              <p class="font-body text-on-surface-variant text-xl italic leading-relaxed">
-                "The ocean pulls the secrets from the sand,<br/>
-                every wave a persistent erasure of who we were..."
-              </p>
-              <p class="font-body text-on-surface-variant/70 text-base leading-relaxed line-clamp-2">
-                There is no sound quite like the receding water, taking back the small shells and the memories we left by the shoreline.
-              </p>
-            </div>
-            <div class="flex items-center gap-6 pt-4">
-              <button onclick="event.stopPropagation(); toggleLike(this)" class="flex items-center gap-2 text-on-surface group-hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">favorite</span>
-                <span class="font-label text-sm uppercase tracking-widest">1.8k</span>
-              </button>
-              <button onclick="event.stopPropagation()" class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors">
-                <span class="material-symbols-outlined">chat_bubble</span>
-                <span class="font-label text-sm uppercase tracking-widest">94</span>
-              </button>
-              <button onclick="event.stopPropagation()" class="mr-auto md:mr-0 md:ml-auto text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">share</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </article>
+    <div id="feed-poems" class="space-y-10"></div>
+    <div id="feed-empty" class="hidden text-center py-20 space-y-4">
+      <span class="material-symbols-outlined text-6xl text-on-surface-variant/30">auto_stories</span>
+      <p class="text-on-surface-variant">No poems yet. Be the first to write one!</p>
     </div>
   </section>
-</main>
+
+</div>
 </div>
 
+<!-- ==================== EXPLORE ==================== -->
+<div id="page-explore" class="page pt-24 pb-32 px-6 max-w-5xl mx-auto">
+<div class="fade-in space-y-12">
 
-<!-- ===================== SEARCH / EXPLORE SCREEN ===================== -->
-<div id="search-screen" class="screen">
-<main class="pt-24 pb-40 px-6 max-w-7xl mx-auto">
-
-  <!-- Search Bar -->
-  <section class="mb-12">
-    <h2 class="font-headline text-4xl font-extrabold tracking-tight mb-8">Search</h2>
+  <!-- Search -->
+  <section class="space-y-8">
+    <h2 class="font-headline text-4xl font-extrabold tracking-tight">Search</h2>
     <div class="relative group">
       <div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
         <span class="material-symbols-outlined">search</span>
       </div>
-      <input id="search-input" oninput="handleSearch(this.value)" class="w-full bg-surface-container-high border-none rounded-xl py-5 pl-14 pr-6 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/50 font-headline font-semibold transition-all outline-none" placeholder="What poem speaks to you?" type="text"/>
+      <input id="search-input" type="text" placeholder="What poem speaks to you?" oninput="handleSearch(this.value)"
+        class="w-full bg-surface-container-high border-none rounded-xl py-5 pl-14 pr-6 text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/50 font-headline font-semibold transition-all"/>
     </div>
-  </section>
-
-  <!-- Search Results (hidden by default) -->
-  <section id="search-results" class="mb-16 hidden">
-    <h3 class="font-headline text-2xl font-bold mb-6">Results</h3>
-    <div id="search-results-list" class="space-y-4"></div>
   </section>
 
   <!-- Category Grid -->
-  <section id="categories-section" class="mb-16">
+  <section id="category-section">
     <div class="flex items-center justify-between mb-8">
       <h3 class="font-headline text-2xl font-bold">Browse categories</h3>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#1e3a8a] to-[#3b82f6] group cursor-pointer transition-transform hover:scale-[1.02]">
-        <div class="p-5"><span class="font-headline text-2xl font-bold text-white">Melancholy</span></div>
-        <img class="absolute -bottom-2 -right-6 w-32 h-32 object-cover rotate-12 rounded-lg shadow-2xl opacity-80 group-hover:rotate-6 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBems0MBDueeo0YNYqkJ2iUkGeYU-moyWA3hBsRzqXKVFBZEZJUV3r1aeQDWMTpHCi3m2397atOtKORvFx0ftu8ubDRQFgBMl-BthgO7bm_B66ErD3B8Ode_KZp14YPCCWymla9Arh15VRzxY3QGO2jurmzEUyYQaGB2M6FaL-lTRcXBCXiUNRZgKLJpPPTx7P3LIBv_3siZu_aClFALvMkVHpwhRSCLWZZo9eQ3nXOCcRJ3wovEUq3untI_KOs2UGSHKsu_v8EMNKW"/>
-      </div>
-      <div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#9f1239] to-[#fb7185] group cursor-pointer transition-transform hover:scale-[1.02]">
-        <div class="p-5"><span class="font-headline text-2xl font-bold text-white">Love</span></div>
-        <img class="absolute -bottom-2 -right-6 w-32 h-32 object-cover rotate-12 rounded-lg shadow-2xl opacity-80 group-hover:rotate-6 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpXEwu56uZTqBPHp6dzg8ly-2NiZPCnyzyTD3hlr9OGSHsC7Noe3-IRzp8_pwhwZsVjIY9cl_w1-JHV8X__rLAM-hy793SX9OYlywH4QwYzFE5hW2rfNIoN-4HuAps0w2bnX4ojiMhpiEQaySf9yX33E5_RIhu2XEKbpH8n6fzBOXQCwcyR5p1UdLQMDBK_WStQNP9-bKLFscWtXbRx4mgUTUMNVKHKPWaYBVARmvdlEaneguKcQPdixX6y0TlnxwDQwigLH0S8G-9"/>
-      </div>
-      <div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#7e22ce] to-[#c084fc] group cursor-pointer transition-transform hover:scale-[1.02]">
-        <div class="p-5"><span class="font-headline text-2xl font-bold text-white">Abstract</span></div>
-        <img class="absolute -bottom-2 -right-6 w-32 h-32 object-cover rotate-12 rounded-lg shadow-2xl opacity-80 group-hover:rotate-6 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSea51-jl-r5sL9WfiKqZewi-b2wVEcAS_32NY7os-_umVime14lZ6F1drOISGvMLyWo4cVMCVp0rsmU9ZWkqdlFIGsKNauUS89TpMG6jOqKNX6RHHQmRGN3tIamP-OoVxPQrr2G8mh5fFHjrzVgAnUh37qXmrPLydSgCszvYjPNXE0IwJU8OPgdRY4wWorxBe5oCWtsqoQBoagUN3dnoZvO6mSVMO_7TrbmXyzlnlUTbTqWy3IRvj90HrruKSbE0gmmGlmXd16flS"/>
-      </div>
-      <div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#065f46] to-[#34d399] group cursor-pointer transition-transform hover:scale-[1.02]">
-        <div class="p-5"><span class="font-headline text-2xl font-bold text-white">Nature</span></div>
-        <img class="absolute -bottom-2 -right-6 w-32 h-32 object-cover rotate-12 rounded-lg shadow-2xl opacity-80 group-hover:rotate-6 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkDnYjIa8STStkHDHL_3GcJrQcAKYoFo4_nKd4MpL87PbPdZ8usBG04W0kMKlh-7fuFn4Ld2RvH1EdTD_u1vmm9cFr8fCONND3KjGzNK7WFl5y3SM7ygD6dMGNwi9HhqqIYiCmgNHh1CwL6tvZcqi5XCy1apxRwOU1-x_wZ4FqeHkrp0cpT_wXtoL22aaA4Ypm4YXRCsAVcHAjGfsOed7eBiK1v55kPPW0vGW5vbbyGcE6A6Xt4J6sWrFG1k3liDMdPzjCgaFZ51Dy"/>
-      </div>
-    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5" id="category-grid"></div>
   </section>
 
   <!-- Browse All Poems -->
-  <section id="browse-section" class="mb-16">
+  <section>
     <div class="flex items-center justify-between mb-8">
       <h3 class="font-headline text-2xl font-bold">Browse all poems</h3>
-      <button class="text-primary font-bold text-sm hover:underline tracking-widest uppercase">See All</button>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-      <div onclick="openPoem('sea')" class="md:col-span-4 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between group cursor-pointer border border-white/5 hover:bg-surface-container transition-colors relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
-        <div>
-          <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold tracking-widest uppercase mb-4">Poem of the day</span>
-          <h4 class="font-headline text-4xl font-bold text-white mb-6 leading-tight">The Unspoken <br/>Vows of the Sea</h4>
-          <p class="text-on-surface-variant font-body text-lg max-w-md leading-relaxed">
-            "Beneath the emerald crests where silence dwells, we found the rhythm of a thousand ghost stories told in salt..."
-          </p>
-        </div>
-        <div class="mt-12 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <img class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8GaHwB09zU7LpS9OSnyK5fzr97187xmHBxASsLMcCd4leDLazkn0cTdPm4rj0ieIV8l9QFHX2Lr8dNuERidTi0SwsGcV-Dkx1VjkXcaiGdQXbqeOdIPkGlxlU5PLnaq4k6WPb9HmcPsDyeCSnR7MVXsZbYjQ7CuGQKOqi11Oc_F12fodEkyYqNpQMkNtWSldsZik1_OhD5xBHV_68dcws5a2UyAbegObMNgvtHOnWGGj9jees_sU4AjoKgHmEUFiBxkDjv0FVxlFm"/>
-            <span class="text-white font-semibold">Julian Voss</span>
-          </div>
-          <button onclick="event.stopPropagation(); playTrack('sea')" class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-          </button>
-        </div>
-      </div>
-      <div class="md:col-span-2 space-y-6">
-        <div onclick="openPoem('gold')" class="bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group">
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
-              <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSD3lFuHl_XzH9lSgRI4mo4aryCuEZguhjk3siMIYxU1Zh_u-1V7TIPTMcWw9wxSjmENOPnHVRmb60B8oL23DzJnBiJgmpPdPvvLBttfPklT8bvLGVfu5EILCTNrrZKYzM8FLRQSejd6z9u75JE_194xuAR8rjvwkLMkGLzVBaQ0tgnS8YZXB8X35pgxzSup-w8s56gNckxZmsDjPpgUUp7tXorecByC94bIRiZMhltDJNePoqRdx0C1rD2F2gNhS9q1Pk5KZ06z0y"/>
-            </div>
-            <div>
-              <h5 class="font-bold text-white line-clamp-1">Echoes in Gold</h5>
-              <span class="text-xs text-on-surface-variant">S. Montgomery</span>
-            </div>
-          </div>
-          <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">favorite</span>
-        </div>
-        <div onclick="openPoem('ink')" class="bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group">
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
-              <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxE9Qk6OvgrkmmJX9-OgdNpuTg0LrBF_-zdpiGNW7-0I_y7-G7NgZ1DEzieFkjMiouzuP3kd-ip06zX4Q9SSqh1ELGZLktmGqwHnjz7MQ3RNXlMC3aOvhgtWQDoPB5_hD3_7f4NKa0cDvqBqnYSj4XOVysrnLm5zuAbVb-LRzNcMIY_N5t9rRNe6Enrl8l4Udc-c4jUheuO8PcRJ0gcSsIHeO4kgAsOWzTgr0b8V8-OYX62nf82Xm6IbD8btQsXWU3wf8yPG2kVkKz"/>
-            </div>
-            <div>
-              <h5 class="font-bold text-white line-clamp-1">Midnight Ink</h5>
-              <span class="text-xs text-on-surface-variant">Aria Chen</span>
-            </div>
-          </div>
-          <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">favorite</span>
-        </div>
-        <div onclick="openPoem('peak')" class="bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group">
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
-              <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH37uJE6It7Yi6ii4bAT_kUYviMqssJa2R0ncnLw0dLNIJZgvSHsU7bF_yM4VgMsamijFRj1taf3l43sOW_7oDkFM521V_TaIwyj7nFwCiumYzk6O1yb-eGW_LM6R_DKsqJJajjage002DHA92MKsNmbiwNU0uToNQD0S4N09RGuGrQWqriw0aJ0cmHzw7g1qKUhiFApP_1m-9fpeqJFrb4bzokUf4Odaxb6DZb7eNIOmEJ907SaYHzRAuIEmOWHWEhNbZl1G4faTJ"/>
-            </div>
-            <div>
-              <h5 class="font-bold text-white line-clamp-1">Peak of Solace</h5>
-              <span class="text-xs text-on-surface-variant">Marcus Thorne</span>
-            </div>
-          </div>
-          <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">favorite</span>
-        </div>
-      </div>
+    <!-- Bento layout -->
+    <div id="explore-bento" class="grid grid-cols-1 md:grid-cols-6 gap-6"></div>
+    <div id="explore-empty" class="hidden text-center py-16 space-y-4">
+      <span class="material-symbols-outlined text-5xl text-on-surface-variant/30">search_off</span>
+      <p class="text-on-surface-variant">No poems found</p>
     </div>
   </section>
-</main>
+
+</div>
 </div>
 
+<!-- ==================== WRITE ==================== -->
+<div id="page-write" class="page pt-24 pb-32 px-6 max-w-2xl mx-auto">
+<div class="fade-in space-y-8">
+  <h2 class="font-headline font-bold text-3xl tracking-tight text-on-surface">Compose</h2>
+  <div class="bg-surface-container-low rounded-xl p-8 space-y-6 ghost-border relative overflow-hidden">
+    <div class="absolute top-0 right-0 p-6 opacity-10">
+      <span class="material-symbols-outlined text-8xl filled">format_quote</span>
+    </div>
+    <input id="poem-title" type="text" placeholder="Title your poem..." class="w-full bg-transparent border-none text-3xl font-headline font-extrabold text-white placeholder:text-on-surface-variant/40 p-0 focus:ring-0 relative z-10"/>
+    <textarea id="poem-body" rows="12" placeholder="Pour your words here..." class="w-full bg-transparent border-none text-lg font-body text-on-surface-variant placeholder:text-on-surface-variant/30 p-0 focus:ring-0 resize-none leading-relaxed relative z-10"></textarea>
+    <div class="flex items-center gap-3 pt-2 relative z-10">
+      <span class="material-symbols-outlined text-on-surface-variant text-sm">tag</span>
+      <input id="poem-tags" type="text" placeholder="Tags (comma separated)" class="flex-1 bg-transparent border-none text-sm text-on-surface-variant placeholder:text-on-surface-variant/30 p-0 focus:ring-0"/>
+    </div>
+  </div>
+  <button onclick="publishPoem()" id="publish-btn" class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 rounded-full font-headline font-bold text-lg tracking-wide active:scale-95 transition-transform flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined filled">send</span> Publish Poem
+  </button>
+  <div id="write-success" class="hidden text-center py-4">
+    <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full">
+      <span class="material-symbols-outlined filled">check_circle</span>
+      <span class="font-headline font-bold">Published!</span>
+    </div>
+  </div>
+</div>
+</div>
 
-<!-- ===================== LIBRARY / PROFILE SCREEN ===================== -->
-<div id="library-screen" class="screen">
-<main class="min-h-screen pt-24 pb-40 bg-mesh">
-  <!-- Profile Header -->
+<!-- ==================== PROFILE ==================== -->
+<div id="page-profile" class="page pt-24 pb-32 bg-mesh">
+<div class="fade-in">
+
+  <!-- Spotify-style Profile Header -->
   <header class="px-6 md:px-12 mb-16">
     <div class="flex flex-col md:flex-row items-end gap-8">
       <div class="relative group">
-        <div class="w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-surface-container-highest transition-transform duration-500 hover:scale-[1.02]">
-          <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoLfT0Zd9tQEdLTsslgpnCU2XSKD2bq5NZM04AjWzsOLRAXYcyByYwEqjtk8meSIh9GiClfJ1-B3mseioiBTvyPjzkJDY87EfIoDaIGohqI0hCv7Lhq-Uwjcc195QJATiC6lbUs8eHYDVZpimhn3XzLCF8ZQ56yspO8Pndx27ZB73LkWXYSnB473YdU-_hKJXwXLYpKD1YV_YUFOrSp5Yi8GMuXv--4Ixf50AwUMH2ypZYvE9I8jOoC1X_OKmuPkjn_1NkjKLgu4Cp"/>
-        </div>
+        <div id="profile-avatar-big" class="w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-surface-container-highest flex items-center justify-center text-primary font-bold text-7xl font-headline transition-transform duration-500 hover:scale-[1.02]"></div>
       </div>
       <div class="flex-1 space-y-4">
         <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
-          <span class="font-label text-xs tracking-[0.2em] uppercase font-bold text-on-surface">Verified Poet</span>
+          <span class="material-symbols-outlined text-primary text-sm filled">verified</span>
+          <span class="font-label text-xs tracking-[0.2em] uppercase font-bold text-on-surface">Poet</span>
         </div>
-        <h1 class="font-headline text-5xl md:text-8xl font-extrabold tracking-tighter text-on-surface leading-none">Elara Vance</h1>
+        <h1 id="profile-displayname" class="font-headline text-5xl md:text-8xl font-extrabold tracking-tighter text-on-surface leading-none"></h1>
+        <p id="profile-username" class="font-label text-xs tracking-[0.2em] uppercase text-primary font-bold"></p>
         <div class="flex flex-wrap items-center gap-6 mt-6">
           <div class="flex flex-col">
-            <span class="font-headline text-2xl font-bold text-primary">142</span>
+            <span id="profile-poem-count" class="font-headline text-2xl font-bold text-primary">0</span>
             <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Published</span>
           </div>
           <div class="flex flex-col border-l border-outline-variant/20 pl-6">
-            <span class="font-headline text-2xl font-bold text-on-surface">12.8K</span>
-            <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Followers</span>
-          </div>
-          <div class="flex flex-col border-l border-outline-variant/20 pl-6">
-            <span class="font-headline text-2xl font-bold text-on-surface">492</span>
-            <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Following</span>
+            <span id="profile-like-count" class="font-headline text-2xl font-bold text-on-surface">0</span>
+            <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Total Likes</span>
           </div>
         </div>
       </div>
     </div>
     <div class="flex items-center gap-4 mt-10">
-      <button class="bg-primary hover:bg-primary-dim text-on-primary px-8 py-3 rounded-full font-headline font-bold transition-all active:scale-95 flex items-center gap-2">
-        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit</span> Edit Profile
+      <button onclick="navigateTo('write')" class="bg-primary hover:bg-primary-dim text-on-primary px-8 py-3 rounded-full font-headline font-bold transition-all active:scale-95 flex items-center gap-2">
+        <span class="material-symbols-outlined filled">edit</span> Write New
       </button>
       <button class="bg-transparent border border-outline-variant/30 hover:bg-white/5 text-on-surface px-8 py-3 rounded-full font-headline font-bold transition-all active:scale-95 flex items-center gap-2">
         <span class="material-symbols-outlined">share</span> Share
       </button>
-      <button class="w-12 h-12 rounded-full flex items-center justify-center border border-outline-variant/30 hover:bg-white/5 text-on-surface transition-all">
-        <span class="material-symbols-outlined">more_horiz</span>
-      </button>
     </div>
   </header>
 
+  <!-- Your Poems (Bento Grid) -->
   <div class="px-6 md:px-12 space-y-16">
-    <!-- Your Poems -->
     <section>
       <div class="flex justify-between items-end mb-8">
         <div>
           <h2 class="font-headline text-3xl font-bold tracking-tight">Your Poems</h2>
-          <p class="text-on-surface-variant text-sm mt-1">Recent stanzas and published collections</p>
-        </div>
-        <button class="text-primary font-bold font-label text-xs tracking-widest uppercase hover:underline">Show All</button>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div onclick="openPoem('midnight-garden')" class="md:col-span-2 md:row-span-2 bg-surface-container-low p-10 rounded-xl relative overflow-hidden group cursor-pointer">
-          <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-40 transition-opacity">
-            <span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">format_quote</span>
-          </div>
-          <div class="relative z-10 flex flex-col h-full justify-between">
-            <div>
-              <span class="text-primary-dim font-label text-[10px] tracking-[0.3em] uppercase mb-4 block">Masterpiece</span>
-              <h3 class="font-headline text-4xl font-extrabold mb-6 leading-tight">The Midnight Garden of Whispers</h3>
-              <p class="text-on-surface-variant italic font-body text-lg leading-relaxed line-clamp-6">
-                In the silence of the velvet night, where the moonbeams weave a silver thread, I found the ghosts of blossoms past, rising from their earthen bed. They do not speak in words we know, but in the scent of rain on dust, a language written in the soul, in shadows we are forced to trust...
-              </p>
-            </div>
-            <div class="mt-8 flex items-center justify-between">
-              <span class="text-on-surface-variant text-sm font-label uppercase tracking-widest">Syllables: 412</span>
-              <div class="flex gap-4">
-                <span class="material-symbols-outlined text-primary">favorite</span>
-                <span class="material-symbols-outlined text-on-surface-variant">bookmark</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div onclick="openPoem('neon-echoes')" class="bg-surface-container-high p-8 rounded-xl hover:bg-surface-bright transition-colors group cursor-pointer">
-          <h3 class="font-headline text-xl font-bold mb-4 group-hover:text-primary transition-colors">Echoes of Neon</h3>
-          <p class="text-on-surface-variant text-sm line-clamp-4 font-body leading-relaxed">City lights like fractured glass, cutting through the heavy haze. We are ghosts in transit here...</p>
-          <div class="mt-6 flex justify-between items-center opacity-60">
-            <span class="text-[10px] font-label tracking-tighter">OCT 12, 2023</span>
-            <span class="material-symbols-outlined text-sm">play_arrow</span>
-          </div>
-        </div>
-        <div onclick="openPoem('rust')" class="bg-surface-container-high p-8 rounded-xl hover:bg-surface-bright transition-colors group cursor-pointer">
-          <h3 class="font-headline text-xl font-bold mb-4 group-hover:text-primary transition-colors">Rust &amp; Reverie</h3>
-          <p class="text-on-surface-variant text-sm line-clamp-4 font-body leading-relaxed">The iron gate forgets the key, but remembers the hand that turned it once in autumn...</p>
-          <div class="mt-6 flex justify-between items-center opacity-60">
-            <span class="text-[10px] font-label tracking-tighter">SEP 28, 2023</span>
-            <span class="material-symbols-outlined text-sm">play_arrow</span>
-          </div>
-        </div>
-        <div class="md:col-span-2 bg-surface-container-low px-8 py-6 rounded-xl flex items-center justify-between group hover:bg-surface-container-high transition-all cursor-pointer">
-          <div class="flex items-center gap-6">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined">auto_stories</span>
-            </div>
-            <div>
-              <h4 class="font-headline font-bold">Unpublished Drafts</h4>
-              <p class="text-xs text-on-surface-variant">12 stanzas in progress</p>
-            </div>
-          </div>
-          <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+          <p class="text-on-surface-variant text-sm mt-1">Recent stanzas and published works</p>
         </div>
       </div>
-    </section>
-
-    <!-- Public Playlists -->
-    <section>
-      <div class="flex justify-between items-end mb-8">
-        <div>
-          <h2 class="font-headline text-3xl font-bold tracking-tight">Public Playlists</h2>
-          <p class="text-on-surface-variant text-sm mt-1">Curated poetic journeys</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-        <div class="group cursor-pointer">
-          <div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden mb-4 shadow-lg relative">
-            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUV3Y_E--lQPy0kmuB2ubBOwhd6piJZFvtZ-79gQMVxLCNGkS7XGUGDKJv3V0Mp1U_WopA45zPdfkcdB_Oqy9sVEbyaLLxKPdd-kFP4s1hfQHdi6JNlm8nHeaDv13mw3i5zkfqwiBxrWodBbywdRv9h6dckrHiHUEBQCc3xCd5wCEtH3jY1A4GONpFR3BGlRaAj0HLQD9VED7yV-FgEiu-imLglZzNfyFyynaSvQJzS07UG5nHBBtb7IPkdeH8PzRKQSQsoRywc9Zw"/>
-            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform">
-                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-              </div>
-            </div>
-          </div>
-          <h4 class="font-headline font-bold truncate">Rainy Day Sonnets</h4>
-          <p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant mt-1">18 Poems &bull; 42m</p>
-        </div>
-        <div class="group cursor-pointer">
-          <div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden mb-4 shadow-lg relative">
-            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD67GA83AqFioW53hsAlrg5qEKQOaGTuXPDoW70XV4Q7zlR17UqjSvWBIb31-khPf-tOJ-8_2MC33Ic3tGHlbrjhpUVvGs7AorePm9zH9r8BknlxrZ0FHdDpiJF1GFV28Ax04c8OUkFZLObxhbW8w2uH-xdiqtphMXQYBmKTwIPhs-ecwR0Nu8oOlccJUCdw0-ibftyHBd5_o2jpFEtxnOZjl-rnEueSqpoGJLxc-UX0QcfahhfXKFYik6Zg_h1sW65JAQlgd943yO"/>
-            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform">
-                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-              </div>
-            </div>
-          </div>
-          <h4 class="font-headline font-bold truncate">Midnight Monologues</h4>
-          <p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant mt-1">24 Poems &bull; 1h 12m</p>
-        </div>
-        <div class="group cursor-pointer">
-          <div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden mb-4 shadow-lg relative">
-            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2_P32WK_NOcL4cffVyBg1KzPM1LkbTmy9PXbHvp82hdkK7ih25xObjkF3GFaKPha3jnrSfgZFfqy-yG33Is6IwYxEY_lzezZRhyOplx8c0qrCuPTQgRzpwbgAv7CzSWB7nPBxC8Ar_yK_E6fdf30C_uGM0LDJM6ZIl_IbNrmMiaMbRZpYeZe_LJd56kghkCIG2lWTkRC6_zi3KEJ8a1Hzzrdq_T2pn-0Mrs4XaE2W4Q2Wp0-mTDtutYV7T3w8S9iFoH3ymmfzHgV0"/>
-            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform">
-                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-              </div>
-            </div>
-          </div>
-          <h4 class="font-headline font-bold truncate">Classical Reimagined</h4>
-          <p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant mt-1">12 Poems &bull; 38m</p>
-        </div>
-        <div class="group cursor-pointer">
-          <div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden mb-4 shadow-lg relative">
-            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhcXCteWus76eV2A3FY95oUDneW1fiZVEnPrEeZ4EVNy16VO2tdkKfbJ6lHNQMSy8CaON77jRX68dgXsNER1-Tozxb-WJr5kImhSbwE3W18O4XDXrqiJl-nYqs5kLdGzKt1hh3e3MkFWqMrds5uwAby4Bk3RciEjpL3Al9RRjULdoew2XyzVOVmBP8lCZZJbj3AsXjjQ2zqtsfjYT6orILOcvuRQmHJEn-Pl8uHcWUQKjr5UFSyve9osDOKhBo9QzLU77xIz8HsVj9"/>
-            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform">
-                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-              </div>
-            </div>
-          </div>
-          <h4 class="font-headline font-bold truncate">Urban Solitude</h4>
-          <p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant mt-1">31 Poems &bull; 54m</p>
-        </div>
-        <div class="group cursor-pointer">
-          <div class="aspect-square bg-surface-container-low border-2 border-dashed border-outline-variant/30 rounded-xl mb-4 flex flex-col items-center justify-center gap-4 hover:bg-surface-container-high hover:border-primary/50 transition-all">
-            <span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary">add_circle</span>
-            <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant group-hover:text-on-surface">New Playlist</span>
-          </div>
-        </div>
+      <div id="profile-poems" class="grid grid-cols-1 md:grid-cols-4 gap-6"></div>
+      <div id="profile-empty" class="hidden text-center py-16 space-y-4">
+        <span class="material-symbols-outlined text-5xl text-on-surface-variant/30">edit_note</span>
+        <p class="text-on-surface-variant">You haven't written any poems yet</p>
+        <button onclick="navigateTo('write')" class="text-primary font-bold hover:underline font-headline">Write your first poem</button>
       </div>
     </section>
   </div>
-</main>
+
+</div>
 </div>
 
-
-<!-- ===================== POEM VIEW (Full-screen overlay) ===================== -->
-<div id="poem-screen" class="bg-background">
-  <!-- Immersive Background -->
-  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-    <img id="poem-bg-img" alt="" class="w-full h-full object-cover opacity-40 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa_HA1EfdGSy3Cvy5MbLikyvahTijJK-oyX9R-zmTbcQ9FmOKQUczHiXcmXA8-ylzuNlfKlwTvh8xvErq-pAUMoILZ0q94Si4juQ1UKLvmmdy4zyDk49s4PQJqdnEFu7bG8mB_epYh8SUBthOy35HFUyNqWi_t6DstVsRb-psCE6F1mx5Nbr0cJVO5ORjtrbkRb5CfwUhpqrXlciB7GJ9DgzQTXJ4vs6lZh4zzFpNiPV-c9J3f1reHRoDs-eYZOTIIz5O2IHaW-YBh"/>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0e0e0e] via-[#0e0e0e]/80 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-[#0e0e0e]/40 via-transparent to-transparent"></div>
+<!-- ==================== POEM VIEW MODAL ==================== -->
+<div id="poem-modal" class="fixed inset-0 z-[100] hidden">
+  <div class="modal-overlay absolute inset-0" onclick="closePoemModal()"></div>
+  <!-- Immersive background -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <div id="poem-modal-bg" class="w-full h-full opacity-40 scale-105"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-surface/40 via-transparent to-transparent"></div>
   </div>
-
-  <!-- Poem Nav -->
-  <nav class="fixed top-0 left-0 w-full z-[110] flex justify-between items-center px-6 py-6">
-    <button onclick="closePoem()" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-high/40 backdrop-blur-md text-on-surface hover:bg-white/10 transition-colors active:scale-95">
-      <span class="material-symbols-outlined">arrow_back</span>
-    </button>
-    <div class="flex flex-col items-center">
-      <span class="font-headline font-bold text-xs tracking-[0.3em] uppercase text-on-surface-variant">Now Reading</span>
-      <span class="font-headline font-black text-sm tracking-widest uppercase text-white">The Velvet Anthology</span>
-    </div>
-    <button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-high/40 backdrop-blur-md text-on-surface hover:bg-white/10 transition-colors active:scale-95">
-      <span class="material-symbols-outlined">more_vert</span>
-    </button>
-  </nav>
-
-  <!-- Poem Content -->
-  <main class="relative z-10 min-h-screen flex flex-col items-center pt-32 pb-60 px-8">
-    <div class="max-w-2xl w-full">
-      <!-- Metadata -->
-      <header class="mb-16 space-y-4">
-        <div class="flex items-center gap-4 mb-2">
-          <div class="h-[1px] w-8 bg-primary"></div>
-          <span id="poem-tags" class="font-label text-xs tracking-[0.2em] uppercase text-primary font-bold">Nature &bull; Solitude</span>
-        </div>
-        <h1 id="poem-title" class="font-headline font-extrabold text-5xl md:text-7xl tracking-tighter leading-none text-white">
-          Neon <br/><span class="text-primary italic">Whispers</span>
-        </h1>
-        <div class="flex items-center gap-3 pt-4">
-          <img id="poem-author-img" alt="Poet Portrait" class="w-10 h-10 rounded-full object-cover grayscale brightness-125 border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCtWP3t1Aiq_BGF3eXR6a90s9K_qHlLWkOMiqMOJcP9NMe4LJXj6OSTnVq-SwOMhNdiqbDHyqop5bn7arQLjIitWXnizM4tyLVPHfGpnO3bLlQIOsbjuFKMEb4lRA-PExLG4FZQhuRUYxRHTjlPwO-GHgd5tMZocbHFCD5moa57pDANnWd_QR1cIf-ZsrXSENouihOOjQptc2LVE_CME9xwhdL6UNLfAkzMs-NnI-jAHNvkenllLqnEU_S-4LYb0DE7KAEM-NcQYvC"/>
-          <div>
-            <p id="poem-author" class="font-headline font-bold text-sm text-white">Julian Vanes</p>
-            <p id="poem-date" class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Published 12 Oct</p>
-          </div>
-        </div>
-      </header>
-
-      <!-- Poem Body -->
-      <article id="poem-body" class="space-y-12 mb-20">
-        <section class="space-y-2">
-          <p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">
-            The city breathes in pulses of emerald light,<br/>
-            A rhythmic thrum beneath the concrete skin.<br/>
-            We are but echoes in the throat of the night,<br/>
-            Waiting for the silence to begin.
-          </p>
-        </section>
-        <section class="space-y-2 translate-x-4 md:translate-x-8">
-          <p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">
-            Shadows stretch like ink on a velvet floor,<br/>
-            Mapping out the paths we failed to take.<br/>
-            Every open window, every locked door,<br/>
-            Is a promise we were meant to break.
-          </p>
-        </section>
-        <section class="space-y-2">
-          <p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">
-            Listen to the hum of the electric wire,<br/>
-            Tracing patterns in the smog-thick air.<br/>
-            The heart is just a flickering, low-burning fire,<br/>
-            Searching for a ghost that isn't there.
-          </p>
-        </section>
-        <section class="space-y-2 opacity-50 italic">
-          <p class="font-body text-lg leading-relaxed text-on-surface-variant">— The end of the beginning.</p>
-        </section>
-      </article>
-
-      <!-- Interaction Bar -->
-      <div class="flex items-center justify-between border-t border-white/5 pt-12 pb-8">
-        <div class="flex items-center gap-8">
-          <button onclick="toggleLike(this)" class="flex flex-col items-center gap-1 group">
-            <span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 1;">favorite</span>
-            <span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase">2.4k</span>
-          </button>
-          <button class="flex flex-col items-center gap-1 group">
-            <span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">chat_bubble</span>
-            <span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase">128</span>
-          </button>
-          <button class="flex flex-col items-center gap-1 group">
-            <span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">share</span>
-            <span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase">Send</span>
-          </button>
-        </div>
-        <button onclick="toggleBookmark(this)" class="w-14 h-14 flex items-center justify-center rounded-full bg-white text-black hover:bg-primary hover:text-on-primary transition-all active:scale-90">
-          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
-        </button>
+  <div class="relative z-10 min-h-screen flex flex-col">
+    <!-- Header -->
+    <nav class="sticky top-0 z-20 flex justify-between items-center px-6 py-6">
+      <button onclick="closePoemModal()" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-high/40 backdrop-blur-md text-on-surface hover:bg-white/10 transition-colors active:scale-95">
+        <span class="material-symbols-outlined">expand_more</span>
+      </button>
+      <div class="flex flex-col items-center">
+        <span class="font-headline font-bold text-xs tracking-[0.3em] uppercase text-on-surface-variant">Now Reading</span>
+        <span class="font-headline font-black text-sm tracking-widest uppercase text-white">Haiku</span>
       </div>
-    </div>
-  </main>
-
-  <!-- Poem Audio Player -->
-  <section class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2.8rem)] max-w-3xl z-[110]">
-    <div class="bg-surface-variant/70 backdrop-blur-xl rounded-lg p-4 md:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
-      <div class="relative w-full h-1 bg-white/10 rounded-full mb-6 group cursor-pointer progress-track" onclick="seekProgress(event, this)">
-        <div id="poem-progress" class="absolute top-0 left-0 h-full w-1/3 bg-primary rounded-full group-hover:bg-primary-dim transition-colors"></div>
-        <div class="progress-knob absolute top-1/2 left-1/3 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 transition-opacity"></div>
-        <div class="absolute -bottom-6 left-0 flex justify-between w-full">
-          <span class="font-label text-[10px] text-on-surface-variant font-bold">1:12</span>
-          <span class="font-label text-[10px] text-on-surface-variant font-bold">3:45</span>
-        </div>
-      </div>
-      <div class="flex items-center justify-between">
-        <div class="hidden md:flex items-center gap-3 w-1/4">
-          <div class="w-10 h-10 rounded bg-gradient-to-br from-primary to-primary-container flex items-center justify-center">
-            <span class="material-symbols-outlined text-on-primary">graphic_eq</span>
-          </div>
-          <div class="overflow-hidden">
-            <p class="font-headline font-bold text-sm truncate">Narrated by Poet</p>
-            <p class="font-label text-[10px] text-primary tracking-widest uppercase">Dolby Atmos</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-6 md:gap-10 flex-1 justify-center">
-          <button class="text-on-surface-variant hover:text-white transition-colors"><span class="material-symbols-outlined text-2xl">shuffle</span></button>
-          <button class="text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">skip_previous</span></button>
-          <button id="poem-play-btn" onclick="togglePoemPlay()" class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white text-black hover:scale-105 transition-transform active:scale-95 shadow-lg">
-            <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-          </button>
-          <button class="text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">skip_next</span></button>
-          <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-2xl">repeat</span></button>
-        </div>
-        <div class="hidden md:flex items-center justify-end gap-4 w-1/4">
-          <span class="material-symbols-outlined text-on-surface-variant text-xl">lyrics</span>
-          <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-on-surface-variant text-xl">volume_up</span>
-            <div class="w-20 h-1 bg-white/10 rounded-full"><div class="w-2/3 h-full bg-on-surface-variant rounded-full"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-
-<!-- ===================== FLOATING PLAYBACK BAR (mini) ===================== -->
-<div id="mini-player" class="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] max-w-md glass-panel rounded-lg px-6 py-3 flex items-center gap-4 z-40 border border-white/5 cursor-pointer transition-all hover:border-primary/20" onclick="openPoem(currentTrack || 'neon')" style="display:none;">
-  <div class="w-10 h-10 rounded-md overflow-hidden bg-primary flex-shrink-0">
-    <img id="mini-player-img" alt="Now Playing" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1jFNSqOKTRwBr41_FXlm0ifj8b8weRXk5vN7fPURO9AAGL6ZsP2OqysORG_fEDKf1wy6wgdgP4lK-hzU4uagz1oGA-uT34pyb9-95HAr_n7pmw9hDHW1GIrRJGbAANFopAIofyAQ67hWHI7Asu1a5TdASX00q8aXzzJChoh2db8kpSpgr6lDYsqMqeetjIt-WuTty2N_hMm7yRW5iu3bH3FjuI437iHE3jpOrC0JtfkyXd6PnM8fR2JA21QSraNzvC2Un2PbgESCa"/>
-  </div>
-  <div class="flex-1 min-w-0">
-    <h5 id="mini-player-title" class="text-white text-sm font-bold truncate">Ethereal Echoes</h5>
-    <p id="mini-player-artist" class="text-on-surface-variant text-[10px] uppercase tracking-widest">Voice: Julian V.</p>
-  </div>
-  <div class="flex items-center gap-3">
-    <button onclick="event.stopPropagation(); toggleMiniPlay()" class="text-white hover:text-primary transition-colors">
-      <span id="mini-play-icon" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-    </button>
-    <button onclick="event.stopPropagation(); closeMiniPlayer()" class="text-white/40 hover:text-white transition-colors">
-      <span class="material-symbols-outlined">close</span>
-    </button>
+      <div class="w-12"></div>
+    </nav>
+    <!-- Poem Content -->
+    <main class="flex-1 flex flex-col items-center pt-8 pb-40 px-8">
+      <div class="max-w-2xl w-full" id="poem-modal-content"></div>
+    </main>
   </div>
 </div>
 
-
-<!-- ===================== BOTTOM NAV BAR ===================== -->
-<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-4 pb-8 px-6 bg-[#0e0e0e]/80 backdrop-blur-xl rounded-t-[3rem] shadow-[0_-8px_32px_rgba(255,255,255,0.05)]">
-  <a onclick="switchTab('home')" class="nav-tab flex flex-col items-center justify-center transition-all cursor-pointer group" data-tab="home">
-    <span class="material-symbols-outlined group-active:scale-110 duration-200 ease-out">home</span>
-    <span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Home</span>
-  </a>
-  <a onclick="switchTab('search')" class="nav-tab flex flex-col items-center justify-center transition-all cursor-pointer group" data-tab="search">
-    <span class="material-symbols-outlined group-active:scale-110 duration-200 ease-out">search</span>
-    <span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Search</span>
-  </a>
-  <a onclick="switchTab('library')" class="nav-tab flex flex-col items-center justify-center transition-all cursor-pointer group" data-tab="library">
-    <span class="material-symbols-outlined group-active:scale-110 duration-200 ease-out">library_books</span>
-    <span class="font-['Manrope'] text-[10px] font-medium tracking-widest uppercase mt-1">Your Library</span>
-  </a>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-4 pb-8 px-6 bg-[#0e0e0e]/80 backdrop-blur-xl rounded-t-[3rem] shadow-[0_-8px_32px_rgba(255,255,255,0.05)]">
+  <button onclick="navigateTo('home')" data-nav="home" class="nav-btn flex flex-col items-center justify-center transition-all group">
+    <span class="material-symbols-outlined nav-icon group-active:scale-110 duration-200 ease-out">home</span>
+    <span class="font-label text-[10px] font-medium tracking-widest uppercase mt-1">Home</span>
+  </button>
+  <button onclick="navigateTo('explore')" data-nav="explore" class="nav-btn flex flex-col items-center justify-center transition-all group">
+    <span class="material-symbols-outlined nav-icon group-active:scale-110 duration-200 ease-out">search</span>
+    <span class="font-label text-[10px] font-medium tracking-widest uppercase mt-1">Search</span>
+  </button>
+  <button onclick="navigateTo('write')" data-nav="write" class="nav-btn flex flex-col items-center justify-center transition-all group">
+    <span class="material-symbols-outlined nav-icon group-active:scale-110 duration-200 ease-out text-2xl">add_circle</span>
+    <span class="font-label text-[10px] font-medium tracking-widest uppercase mt-1">Write</span>
+  </button>
+  <button onclick="navigateTo('profile')" data-nav="profile" class="nav-btn flex flex-col items-center justify-center transition-all group">
+    <span class="material-symbols-outlined nav-icon group-active:scale-110 duration-200 ease-out">library_books</span>
+    <span class="font-label text-[10px] font-medium tracking-widest uppercase mt-1">Profile</span>
+  </button>
 </nav>
 
+</div><!-- /app-shell -->
 
-<!-- ===================== JAVASCRIPT ===================== -->
 <script>
-// --- State ---
-let activeTab = 'home';
-let poemOpen = false;
-let miniPlaying = false;
-let poemPlaying = false;
-let currentTrack = null;
+// ===================== DATA LAYER =====================
+const SK = { USERS:'va_users', POEMS:'va_poems', CUR:'va_current_user', LIKES:'va_likes' };
+function getUsers(){return JSON.parse(localStorage.getItem(SK.USERS)||'{}')}
+function saveUsers(u){localStorage.setItem(SK.USERS,JSON.stringify(u))}
+function getPoems(){return JSON.parse(localStorage.getItem(SK.POEMS)||'[]')}
+function savePoems(p){localStorage.setItem(SK.POEMS,JSON.stringify(p))}
+function getLikes(){return JSON.parse(localStorage.getItem(SK.LIKES)||'{}')}
+function saveLikes(l){localStorage.setItem(SK.LIKES,JSON.stringify(l))}
+function getCur(){return localStorage.getItem(SK.CUR)}
+function setCur(u){localStorage.setItem(SK.CUR,u)}
 
-// --- Poem Data ---
-const poems = {
-  'obsidian': {
-    title: 'The Obsidian<br/><span class="text-primary italic">Sonnet</span>',
-    tags: 'Dark Romanticism &bull; Modern',
-    author: 'Editorial Team', date: 'Published 15 Nov',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">In obsidian halls where silence reigns supreme,<br/>The poets gather, ink like blood in veins.<br/>Each word a stone cast in a moonlit stream,<br/>Each verse a ghost that dances in the rain.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">We write because the darkness understands,<br/>The weight of truths too heavy for the tongue.<br/>We build our cathedrals with trembling hands,<br/>And sing the songs that should not yet be sung.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— From the obsidian depths.</p></section>`
-  },
-  'neon': {
-    title: 'Neon<br/><span class="text-primary italic">Whispers</span>',
-    tags: 'Nature &bull; Solitude',
-    author: 'Julian Vanes', date: 'Published 12 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">The city breathes in pulses of emerald light,<br/>A rhythmic thrum beneath the concrete skin.<br/>We are but echoes in the throat of the night,<br/>Waiting for the silence to begin.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">Shadows stretch like ink on a velvet floor,<br/>Mapping out the paths we failed to take.<br/>Every open window, every locked door,<br/>Is a promise we were meant to break.</p></section>
-    <section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">Listen to the hum of the electric wire,<br/>Tracing patterns in the smog-thick air.<br/>The heart is just a flickering, low-burning fire,<br/>Searching for a ghost that isn't there.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— The end of the beginning.</p></section>`
-  },
-  'geometric': {
-    title: 'Geometric<br/><span class="text-primary italic">Solace</span>',
-    tags: 'Architecture &bull; Contemplation',
-    author: 'Elias Thorne', date: 'Published 8 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">The concrete does not ask for forgiveness,<br/>It simply stands, a brutalist anchor in a fluid world.<br/>We find our edges where the light breaks<br/>Against the stone that will not yield.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">There is a certain kind of peace<br/>In the straight lines that the wind cannot bend,<br/>In the angles that refuse to soften,<br/>In the corners where the shadows end.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Built to last.</p></section>`
-  },
-  'tide': {
-    title: 'Tide &amp;<br/><span class="text-primary italic">Memory</span>',
-    tags: 'Ocean &bull; Nostalgia',
-    author: 'Sarah Vance', date: 'Published 5 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">The ocean pulls the secrets from the sand,<br/>Every wave a persistent erasure of who we were.<br/>Salt on lips, the taste of a forgotten land,<br/>Where every memory is a beautiful blur.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">There is no sound quite like the receding water,<br/>Taking back the small shells and the years.<br/>The tide is neither a son nor a daughter,<br/>Just an ancient collector of tears.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Written at the shoreline.</p></section>`
-  },
-  'moon': {
-    title: 'Silver<br/><span class="text-primary italic">Moon</span>',
-    tags: 'Haiku &bull; Night',
-    author: 'Luna Poetica', date: 'Published 20 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">Silver moon hangs high,<br/>Whispers in the velvet dark,<br/>Shadows dance alone.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">A single beam cuts<br/>Through the silence of the pines,<br/>Painting silver paths.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Under the open sky.</p></section>`
-  },
-  'autumn': {
-    title: 'Autumn<br/><span class="text-primary italic">Descent</span>',
-    tags: 'Haiku &bull; Seasons',
-    author: 'Frost Writer', date: 'Published 18 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">Autumn leaf descends,<br/>Gold upon the asphalt gray,<br/>Winter breathes its name.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">The trees remember<br/>Every colour they have worn,<br/>Shedding without grief.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— The quiet letting go.</p></section>`
-  },
-  'digital': {
-    title: 'Digital<br/><span class="text-primary italic">Heartbeat</span>',
-    tags: 'Haiku &bull; Technology',
-    author: 'Cyber Scribe', date: 'Published 14 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">Digital signals,<br/>Glow within the silent room,<br/>Heartbeat in the code.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">Ones and zeros breathe<br/>Life into the glass and wire,<br/>A soul made of light.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Compiled at midnight.</p></section>`
-  },
-  'sea': {
-    title: 'The Unspoken<br/><span class="text-primary italic">Vows of the Sea</span>',
-    tags: 'Ocean &bull; Mystery',
-    author: 'Julian Voss', date: 'Published 22 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">Beneath the emerald crests where silence dwells,<br/>We found the rhythm of a thousand ghost stories<br/>Told in salt and seafoam, in broken shells,<br/>In the creaking hulls of sunken glories.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">The sea does not make promises it cannot keep,<br/>It simply takes, and gives, and takes again.<br/>In its depths, the ancient leviathans sleep,<br/>Dreaming of the world before the rain.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— From the deep below.</p></section>`
-  },
-  'gold': {
-    title: 'Echoes<br/><span class="text-primary italic">in Gold</span>',
-    tags: 'Light &bull; Reflection',
-    author: 'S. Montgomery', date: 'Published 19 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">The golden hour spills its warmth on stone,<br/>Each shadow a reminder we are not alone.<br/>In the amber light, our edges softly glow,<br/>Revealing all the beauty in the undertow.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Gilded and fleeting.</p></section>`
-  },
-  'ink': {
-    title: 'Midnight<br/><span class="text-primary italic">Ink</span>',
-    tags: 'Night &bull; Writing',
-    author: 'Aria Chen', date: 'Published 16 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">The pen moves in the hours the world forgets,<br/>Tracing lines of thought like cigarettes<br/>Burning slow against the windowpane,<br/>Each sentence is a shelter from the rain.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Written before dawn.</p></section>`
-  },
-  'peak': {
-    title: 'Peak of<br/><span class="text-primary italic">Solace</span>',
-    tags: 'Mountains &bull; Peace',
-    author: 'Marcus Thorne', date: 'Published 11 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">Above the treeline where the air thins out,<br/>The silence is a language without doubt.<br/>No words are needed at this altitude,<br/>Just breath, and sky, and gratitude.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— At the summit.</p></section>`
-  },
-  'midnight-garden': {
-    title: 'The Midnight Garden<br/><span class="text-primary italic">of Whispers</span>',
-    tags: 'Night &bull; Flowers',
-    author: 'Elara Vance', date: 'Published 1 Nov',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">In the silence of the velvet night,<br/>Where the moonbeams weave a silver thread,<br/>I found the ghosts of blossoms past,<br/>Rising from their earthen bed.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">They do not speak in words we know,<br/>But in the scent of rain on dust,<br/>A language written in the soul,<br/>In shadows we are forced to trust.</p></section>
-    <section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">The petals fall like whispered prayers,<br/>Each one a memory in bloom,<br/>The midnight garden never sleeps,<br/>It only rearranges the perfume.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Where the garden ends, the dream begins.</p></section>`
-  },
-  'neon-echoes': {
-    title: 'Echoes of<br/><span class="text-primary italic">Neon</span>',
-    tags: 'Urban &bull; Night',
-    author: 'Elara Vance', date: 'Published 12 Oct',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">City lights like fractured glass,<br/>Cutting through the heavy haze.<br/>We are ghosts in transit here,<br/>Counting down the numbered days.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— In the glow of the city.</p></section>`
-  },
-  'rust': {
-    title: 'Rust &amp;<br/><span class="text-primary italic">Reverie</span>',
-    tags: 'Memory &bull; Autumn',
-    author: 'Elara Vance', date: 'Published 28 Sep',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">The iron gate forgets the key,<br/>But remembers the hand that turned it<br/>Once in autumn, when the leaves<br/>Were the colour of everything we burned.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">Rust is not decay, it is a diary,<br/>A slow confession of the years,<br/>Written in oxide and patience,<br/>In the quiet language of tears.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Things that weather beautifully.</p></section>`
-  },
-  'neon-haiku': {
-    title: 'Neon<br/><span class="text-primary italic">Haikus</span>',
-    tags: 'Urban &bull; Haiku',
-    author: 'Various Artists', date: 'Collection',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">Neon signs flicker,<br/>Rain-soaked streets mirror the sky,<br/>Lost souls find their way.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">Taxi cabs streak by,<br/>Yellow ghosts on asphalt black,<br/>The city never sleeps.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— A collection of urban haikus.</p></section>`
-  },
-  'wired': {
-    title: 'Wired<br/><span class="text-primary italic">Verses</span>',
-    tags: 'Technology &bull; Connection',
-    author: 'The Collective', date: 'Collection',
-    body: `<section class="space-y-2"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">Through copper veins the data flows,<br/>A river made of ones and light.<br/>We speak in protocols and code,<br/>And dream in pixels every night.</p></section>
-    <section class="space-y-2 translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">Connection is a fragile thread,<br/>Strung between the here and there.<br/>A message sent, a message read,<br/>A human heart laid digitally bare.</p></section>
-    <section class="space-y-2 opacity-50 italic"><p class="font-body text-lg leading-relaxed text-on-surface-variant">— Transmitted at the speed of thought.</p></section>`
-  }
-};
-
-// --- All searchable items ---
-const searchItems = Object.entries(poems).map(([id, p]) => {
-  const tmp = document.createElement('div');
-  tmp.innerHTML = p.title;
-  return { id, title: tmp.textContent, author: p.author, tags: p.tags.replace(/&bull;/g, '') };
-});
-
-// --- Tab Navigation ---
-function switchTab(tab) {
-  activeTab = tab;
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(tab + '-screen').classList.add('active');
-  updateNav();
-  window.scrollTo(0, 0);
+// Gradient palette for visual variety
+const GRADIENTS = [
+  'from-[#1e3a8a] to-[#3b82f6]',   // blue
+  'from-[#9f1239] to-[#fb7185]',   // rose
+  'from-[#7e22ce] to-[#c084fc]',   // purple
+  'from-[#065f46] to-[#34d399]',   // green
+  'from-[#92400e] to-[#fbbf24]',   // amber
+  'from-[#0f766e] to-[#5eead4]',   // teal
+  'from-[#4c1d95] to-[#a78bfa]',   // violet
+  'from-[#991b1b] to-[#f87171]',   // red
+];
+function gradientFor(str) {
+  let h = 0; for (let i=0;i<str.length;i++) h = ((h<<5)-h)+str.charCodeAt(i);
+  return GRADIENTS[Math.abs(h) % GRADIENTS.length];
 }
 
-function updateNav() {
-  document.querySelectorAll('.nav-tab').forEach(t => {
-    const isActive = t.dataset.tab === activeTab;
-    t.className = `nav-tab flex flex-col items-center justify-center transition-all cursor-pointer group ${isActive ? 'text-[#57f47f] font-bold' : 'text-[#adaaaa] hover:text-white'}`;
-    const icon = t.querySelector('.material-symbols-outlined');
-    icon.style.fontVariationSettings = isActive ? "'FILL' 1" : "'FILL' 0";
+// Categories with gradients
+const CATEGORIES = [
+  {name:'Melancholy', gradient:'from-[#1e3a8a] to-[#3b82f6]', tag:'melancholy'},
+  {name:'Love', gradient:'from-[#9f1239] to-[#fb7185]', tag:'love'},
+  {name:'Nature', gradient:'from-[#065f46] to-[#34d399]', tag:'nature'},
+  {name:'Night', gradient:'from-[#4c1d95] to-[#a78bfa]', tag:'night'},
+  {name:'City', gradient:'from-[#92400e] to-[#fbbf24]', tag:'city'},
+  {name:'Memory', gradient:'from-[#0f766e] to-[#5eead4]', tag:'memory'},
+  {name:'Technology', gradient:'from-[#7e22ce] to-[#c084fc]', tag:'technology'},
+  {name:'Solitude', gradient:'from-[#991b1b] to-[#f87171]', tag:'solitude'},
+];
+
+// Seed
+function seedData(){
+  if(localStorage.getItem('va_seeded2'))return;
+  // clear old seed
+  const users = {
+    luna_poetica:{displayName:'Luna Poetica',password:'luna123'},
+    frost_writer:{displayName:'Frost Writer',password:'frost123'},
+    elias_thorne:{displayName:'Elias Thorne',password:'elias123'},
+    sarah_vance:{displayName:'Sarah Vance',password:'sarah123'},
+    cyber_scribe:{displayName:'Cyber Scribe',password:'cyber123'}
+  };
+  // keep existing user accounts
+  const existing = getUsers();
+  Object.keys(existing).forEach(k => { if(!users[k]) users[k] = existing[k]; });
+
+  const now=Date.now();
+  const poems=[
+    {id:'s1',title:'Silver Moon Haiku',body:'Silver moon hangs high,\nWhispers in the velvet dark,\nShadows dance alone.',author:'luna_poetica',tags:['haiku','night','moon'],createdAt:now-86400000*3,likeCount:1247},
+    {id:'s2',title:'Autumn Descent',body:'Autumn leaf descends,\nGold upon the asphalt gray,\nWinter breathes its name.\n\nThe trees stand naked now,\ntheir secrets stripped by wind,\nand we pretend not to notice\nhow beautiful surrender looks.',author:'frost_writer',tags:['autumn','nature'],createdAt:now-86400000*2,likeCount:842},
+    {id:'s3',title:'Geometric Solace',body:'The concrete does not ask for forgiveness,\nit simply stands, a brutalist anchor\nin a fluid world.\n\nWe find our edges\nwhere the light breaks against the stone.\nThere is a certain kind of peace\nin the straight lines\nthat the wind cannot bend.\n\nI press my palm to the cold wall\nand feel the hum of a thousand lives\nlived behind it\u2014\neach one a geometry\nof love and loss.',author:'elias_thorne',tags:['architecture','solitude'],createdAt:now-86400000*1.5,likeCount:2431},
+    {id:'s4',title:'Tide & Memory',body:'The ocean pulls the secrets from the sand,\nevery wave a persistent erasure\nof who we were.\n\nThere is no sound quite like\nthe receding water,\ntaking back the small shells\nand the memories we left\nby the shoreline.\n\nWe built castles here once,\nyou and I,\nwith turrets made of promises\nand moats filled with laughter.\nThe tide took those too.',author:'sarah_vance',tags:['ocean','memory','love'],createdAt:now-86400000,likeCount:1823},
+    {id:'s5',title:'Digital Heartbeat',body:'Digital signals,\nGlow within the silent room,\nHeartbeat in the code.\n\nWe speak in packets now,\nour love compressed and sent\nacross fiber-optic veins.\n\nSomewhere between the zeros\nand the ones,\nI left you a message\nthat no algorithm\ncould ever decode.',author:'cyber_scribe',tags:['technology','love'],createdAt:now-43200000,likeCount:503},
+    {id:'s6',title:'The Midnight Garden of Whispers',body:'In the silence of the velvet night,\nwhere the moonbeams weave a silver thread,\nI found the ghosts of blossoms past,\nrising from their earthen bed.\n\nThey do not speak in words we know,\nbut in the scent of rain on dust,\na language written in the soul,\nin shadows we are forced to trust.\n\nThe garden breathes when no one looks,\nits petals opening to the dark.\nEach flower holds a whispered prayer,\neach thorn, a question, each root, a mark.',author:'luna_poetica',tags:['night','garden','mystery'],createdAt:now-36000000,likeCount:3156},
+    {id:'s7',title:'Neon Whispers',body:'The city breathes in pulses of emerald light,\nA rhythmic thrum beneath the concrete skin.\nWe are but echoes in the throat of the night,\nWaiting for the silence to begin.\n\nShadows stretch like ink on a velvet floor,\nMapping out the paths we failed to take.\nEvery open window, every locked door,\nIs a promise we were meant to break.\n\nListen to the hum of the electric wire,\nTracing patterns in the smog-thick air.\nThe heart is just a flickering, low-burning fire,\nSearching for a ghost that isn\'t there.',author:'elias_thorne',tags:['city','night','neon'],createdAt:now-18000000,likeCount:1094},
+    {id:'s8',title:'The Unspoken Vows of the Sea',body:'Beneath the emerald crests where silence dwells,\nwe found the rhythm of a thousand ghost stories\ntold in salt and starlight.\n\nThe waves do not forgive,\nthey simply forget,\nrewriting the shore\nwith each patient breath.\n\nI stood at the edge once,\noffering my name to the current,\nand the sea took it gently\u2014\nas though it had been waiting.',author:'sarah_vance',tags:['ocean','melancholy','nature'],createdAt:now-7200000,likeCount:1589},
+  ];
+  // keep user-created poems
+  const existingPoems = getPoems().filter(p => !p.id.startsWith('s'));
+  saveUsers(users);
+  savePoems([...poems, ...existingPoems]);
+  localStorage.setItem('va_seeded2','true');
+}
+
+// ===================== AUTH =====================
+function showLogin(){document.getElementById('login-form').classList.remove('hidden');document.getElementById('signup-form').classList.add('hidden');hideErr()}
+function showSignup(){document.getElementById('login-form').classList.add('hidden');document.getElementById('signup-form').classList.remove('hidden');hideErr()}
+function hideErr(){document.getElementById('login-error').classList.add('hidden');document.getElementById('signup-error').classList.add('hidden')}
+function showErr(id,m){const e=document.getElementById(id);e.textContent=m;e.classList.remove('hidden')}
+
+function handleLogin(){
+  const u=document.getElementById('login-username').value.trim().toLowerCase(),p=document.getElementById('login-password').value;
+  if(!u||!p)return showErr('login-error','Please fill in all fields');
+  const users=getUsers();
+  if(!users[u])return showErr('login-error','Account not found. Sign up first!');
+  if(users[u].password!==p)return showErr('login-error','Incorrect password');
+  setCur(u);enterApp();
+}
+function handleSignup(){
+  const d=document.getElementById('signup-displayname').value.trim(),u=document.getElementById('signup-username').value.trim().toLowerCase().replace(/[^a-z0-9_]/g,''),p=document.getElementById('signup-password').value;
+  if(!d||!u||!p)return showErr('signup-error','Please fill in all fields');
+  if(u.length<3)return showErr('signup-error','Username must be at least 3 characters');
+  if(p.length<4)return showErr('signup-error','Password must be at least 4 characters');
+  const users=getUsers();
+  if(users[u])return showErr('signup-error','Username already taken');
+  users[u]={displayName:d,password:p};saveUsers(users);setCur(u);enterApp();
+}
+function handleLogout(){
+  localStorage.removeItem(SK.CUR);
+  document.getElementById('app-shell').classList.add('hidden');
+  document.getElementById('auth-screen').classList.remove('hidden');
+  document.getElementById('login-username').value='';
+  document.getElementById('login-password').value='';
+  showLogin();
+}
+
+// ===================== APP =====================
+function enterApp(){
+  document.getElementById('auth-screen').classList.add('hidden');
+  document.getElementById('app-shell').classList.remove('hidden');
+  document.getElementById('header-avatar').textContent=getInitial(getCur());
+  navigateTo('home');
+}
+
+// ===================== NAV =====================
+let curPage='home';
+function navigateTo(page){
+  curPage=page;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const el=document.getElementById('page-'+page);
+  if(el)el.classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>{
+    const a=b.dataset.nav===page;
+    b.classList.toggle('text-primary',a);b.classList.toggle('font-bold',a);
+    b.classList.toggle('text-on-surface-variant',!a);
+    b.querySelector('.nav-icon').classList.toggle('filled',a);
   });
+  if(page==='home')renderHome();
+  else if(page==='explore')renderExplore();
+  else if(page==='profile')renderProfile();
+  else if(page==='write')resetWrite();
+  window.scrollTo(0,0);
 }
 
-// --- Poem View ---
-function openPoem(id) {
-  const poem = poems[id];
-  if (!poem) return;
-  currentTrack = id;
-  document.getElementById('poem-title').innerHTML = poem.title;
-  document.getElementById('poem-tags').innerHTML = poem.tags;
-  document.getElementById('poem-author').textContent = poem.author;
-  document.getElementById('poem-date').textContent = poem.date;
-  document.getElementById('poem-body').innerHTML = poem.body;
-  document.getElementById('poem-screen').classList.add('active');
-  document.getElementById('poem-screen').scrollTop = 0;
-  document.getElementById('main-header').style.display = 'none';
-  document.getElementById('bottom-nav').style.display = 'none';
-  document.getElementById('mini-player').style.display = 'none';
-  document.body.style.overflow = 'hidden';
-  poemOpen = true;
+// ===================== HELPERS =====================
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function dn(u){return getUsers()[u]?.displayName||u}
+function getInitial(u){return((getUsers()[u]?.displayName||u)[0]||'?').toUpperCase()}
+function hasLiked(id){return getLikes()[getCur()+':'+id]===true}
+function timeAgo(ts){
+  const d=Date.now()-ts,m=Math.floor(d/60000);
+  if(m<1)return'just now';if(m<60)return m+'m ago';
+  const h=Math.floor(m/60);if(h<24)return h+'h ago';
+  const dy=Math.floor(h/24);if(dy<30)return dy+'d ago';
+  return new Date(ts).toLocaleDateString('en-US',{month:'short',day:'numeric'});
 }
+function fmtCount(n){return n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n)}
+function readTime(body){return Math.max(1,Math.round(body.split(/\s+/).length/200))}
 
-function closePoem() {
-  document.getElementById('poem-screen').classList.remove('active');
-  document.getElementById('main-header').style.display = '';
-  document.getElementById('bottom-nav').style.display = '';
-  if (currentTrack) document.getElementById('mini-player').style.display = '';
-  document.body.style.overflow = '';
-  poemOpen = false;
-}
-
-// --- Mini Player ---
-function playTrack(id) {
-  currentTrack = id;
-  const poem = poems[id];
-  if (poem) {
-    document.getElementById('mini-player-title').textContent = document.createElement('div').appendChild(
-      Object.assign(document.createElement('span'), { innerHTML: poem.title })
-    ).textContent;
-    document.getElementById('mini-player-artist').textContent = 'Voice: ' + poem.author;
-  }
-  document.getElementById('mini-player').style.display = '';
-  miniPlaying = true;
-  document.getElementById('mini-play-icon').textContent = 'pause';
-}
-
-function toggleMiniPlay() {
-  miniPlaying = !miniPlaying;
-  document.getElementById('mini-play-icon').textContent = miniPlaying ? 'pause' : 'play_arrow';
-}
-
-function closeMiniPlayer() {
-  document.getElementById('mini-player').style.display = 'none';
-  miniPlaying = false;
-  currentTrack = null;
-}
-
-// --- Poem Player ---
-function togglePoemPlay() {
-  poemPlaying = !poemPlaying;
-  document.querySelector('#poem-play-btn .material-symbols-outlined').textContent = poemPlaying ? 'pause' : 'play_arrow';
-}
-
-function seekProgress(e, track) {
-  const rect = track.getBoundingClientRect();
-  const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-  document.getElementById('poem-progress').style.width = (pct * 100) + '%';
-  track.querySelector('.progress-knob').style.left = (pct * 100) + '%';
-}
-
-// --- Like / Bookmark ---
-function toggleLike(btn) {
-  const icon = btn.querySelector('.material-symbols-outlined');
-  const filled = icon.style.fontVariationSettings?.includes("'FILL' 1");
-  icon.style.fontVariationSettings = filled ? "'FILL' 0" : "'FILL' 1";
-  icon.classList.toggle('text-primary', !filled);
-}
-
-function toggleBookmark(btn) {
-  const isBookmarked = btn.classList.contains('bg-primary');
-  btn.classList.toggle('bg-white', !isBookmarked);
-  btn.classList.toggle('text-black', !isBookmarked);
-  btn.classList.toggle('bg-primary', isBookmarked);
-  btn.classList.toggle('text-on-primary', isBookmarked);
-}
-
-// --- Search ---
-function handleSearch(query) {
-  const resultsSection = document.getElementById('search-results');
-  const resultsList = document.getElementById('search-results-list');
-  const cats = document.getElementById('categories-section');
-  const browse = document.getElementById('browse-section');
-
-  if (!query.trim()) {
-    resultsSection.classList.add('hidden');
-    cats.classList.remove('hidden');
-    browse.classList.remove('hidden');
+// ===================== HOME FEED =====================
+function renderHome(){
+  const poems=getPoems().sort((a,b)=>b.createdAt-a.createdAt);
+  if(!poems.length){
+    document.getElementById('hero-grid').classList.add('hidden');
+    document.getElementById('feed-empty').classList.remove('hidden');
+    document.getElementById('feed-poems').innerHTML='';
+    document.getElementById('trending-scroll').innerHTML='';
     return;
   }
+  document.getElementById('hero-grid').classList.remove('hidden');
+  document.getElementById('feed-empty').classList.add('hidden');
 
-  const q = query.toLowerCase();
-  const matches = searchItems.filter(item =>
-    item.title.toLowerCase().includes(q) ||
-    item.author.toLowerCase().includes(q) ||
-    item.tags.toLowerCase().includes(q)
-  );
+  // Hero featured = most liked
+  const sorted=[...poems].sort((a,b)=>(b.likeCount||0)-(a.likeCount||0));
+  const featured=sorted[0];
+  const grad=gradientFor(featured.title);
+  document.getElementById('hero-featured').innerHTML=`
+    <div class="absolute inset-0 bg-gradient-to-br ${grad}" onclick="openPoem('${featured.id}')"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 p-8 space-y-2">
+      <span class="font-label text-xs tracking-widest uppercase text-primary font-bold">Curated for You</span>
+      <h3 class="font-headline font-extrabold text-4xl leading-none">${esc(featured.title)}</h3>
+      <p class="font-body text-on-surface-variant text-sm max-w-xs">${esc(featured.body.substring(0,80))}...</p>
+    </div>`;
 
-  cats.classList.add('hidden');
-  browse.classList.add('hidden');
-  resultsSection.classList.remove('hidden');
+  // Bento sub-cards (next 3 poems)
+  const bentoPoems=sorted.slice(1,4);
+  let bentoHtml='';
+  bentoPoems.forEach((p,i)=>{
+    const g=gradientFor(p.title+p.id);
+    if(i<2){
+      bentoHtml+=`<div class="relative rounded-xl overflow-hidden bg-gradient-to-br ${g} group cursor-pointer" onclick="openPoem('${p.id}')">
+        <div class="absolute inset-0 flex items-end p-4 bg-gradient-to-t from-black/80 to-transparent">
+          <h4 class="font-headline font-bold text-lg">${esc(p.title)}</h4>
+        </div></div>`;
+    } else {
+      bentoHtml+=`<div class="relative rounded-xl overflow-hidden bg-gradient-to-br ${g} group cursor-pointer col-span-2" onclick="openPoem('${p.id}')">
+        <div class="absolute inset-0 flex items-center justify-between px-6 bg-gradient-to-r from-black/60 to-transparent">
+          <div><h4 class="font-headline font-bold text-xl">${esc(p.title)}</h4>
+          <p class="text-xs text-on-surface-variant font-label uppercase tracking-widest">${esc(dn(p.author))}</p></div>
+          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
+            <span class="material-symbols-outlined filled">play_arrow</span>
+          </div>
+        </div></div>`;
+    }
+  });
+  document.getElementById('hero-bento').innerHTML=bentoHtml;
 
-  if (matches.length === 0) {
-    resultsList.innerHTML = '<p class="text-on-surface-variant py-8 text-center">No poems found. Try a different search.</p>';
-    return;
-  }
-
-  resultsList.innerHTML = matches.map(m => `
-    <div onclick="openPoem('${m.id}')" class="bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group">
-      <div>
-        <h5 class="font-bold text-white group-hover:text-primary transition-colors">${m.title}</h5>
-        <span class="text-xs text-on-surface-variant">${m.author}</span>
+  // Trending horizontal scroll (top by likes, haiku-style cards)
+  const trending=sorted.slice(0,6);
+  document.getElementById('trending-scroll').innerHTML=trending.map(p=>{
+    const liked=hasLiked(p.id);
+    const lines=p.body.split('\n').slice(0,3);
+    return `<div class="min-w-[280px] bg-surface-container-low rounded-xl p-8 space-y-4 ghost-border flex-shrink-0 cursor-pointer hover:bg-surface-container transition-colors" onclick="openPoem('${p.id}')">
+      <div class="space-y-1">${lines.map(l=>'<p class="font-body text-on-surface text-lg leading-relaxed">'+esc(l)+'</p>').join('')}</div>
+      <div class="pt-4 flex items-center justify-between border-t border-outline-variant/15">
+        <span class="text-on-surface-variant text-xs font-label">@${esc(p.author)}</span>
+        <div class="flex items-center gap-1 ${liked?'text-primary':'text-on-surface-variant'}">
+          <span class="material-symbols-outlined text-sm ${liked?'filled':''}">favorite</span>
+          <span class="text-[10px] font-bold">${fmtCount(p.likeCount||0)}</span>
+        </div>
       </div>
-      <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_forward</span>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
+
+  // Vertical feed cards (matching the home_feed design with alternating layout)
+  document.getElementById('feed-poems').innerHTML=poems.map((p,i)=>{
+    const liked=hasLiked(p.id);
+    const grad=gradientFor(p.title+p.author);
+    const reverse=i%2===1?'md:flex-row-reverse':'md:flex-row';
+    const bodyPreview=p.body.length>150?esc(p.body.substring(0,150)).replace(/\n/g,'<br/>')+'...':esc(p.body).replace(/\n/g,'<br/>');
+    return `<article class="group">
+      <div class="flex flex-col ${reverse} gap-8 items-start">
+        <div class="w-full md:w-1/3 aspect-[3/4] rounded-xl overflow-hidden cursor-pointer bg-gradient-to-br ${grad} relative" onclick="openPoem('${p.id}')">
+          <div class="absolute inset-0 flex items-center justify-center opacity-20">
+            <span class="material-symbols-outlined text-white text-8xl filled">format_quote</span>
+          </div>
+        </div>
+        <div class="flex-1 space-y-4">
+          <div class="space-y-2">
+            <h3 class="font-headline font-extrabold text-3xl tracking-tight text-on-surface cursor-pointer hover:text-primary transition-colors" onclick="openPoem('${p.id}')">${esc(p.title)}</h3>
+            <div class="flex items-center gap-2">
+              <span class="font-label text-xs uppercase tracking-[0.2em] text-primary font-bold">${esc(dn(p.author))}</span>
+              <span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+              <span class="text-on-surface-variant text-xs font-label">${readTime(p.body)} MIN READ</span>
+            </div>
+          </div>
+          <p class="font-body text-on-surface-variant text-lg italic leading-relaxed cursor-pointer" onclick="openPoem('${p.id}')">"${bodyPreview}"</p>
+          <div class="flex items-center gap-6 pt-2">
+            <button onclick="event.stopPropagation();toggleLike('${p.id}','feed')" class="flex items-center gap-2 transition-colors ${liked?'text-primary':'text-on-surface group-hover:text-primary'}">
+              <span id="feed-heart-${p.id}" class="material-symbols-outlined ${liked?'filled':''}">favorite</span>
+              <span id="feed-count-${p.id}" class="font-label text-sm uppercase tracking-widest">${fmtCount(p.likeCount||0)}</span>
+            </button>
+            <button onclick="openPoem('${p.id}')" class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors">
+              <span class="material-symbols-outlined">menu_book</span>
+              <span class="font-label text-sm uppercase tracking-widest">Read</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="h-px w-full bg-gradient-to-r from-transparent via-surface-container-high to-transparent mt-10"></div>
+    </article>`;
+  }).join('');
 }
 
-// --- Keyboard shortcut: Escape to close poem ---
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && poemOpen) closePoem();
+// ===================== EXPLORE =====================
+function renderExplore(q){
+  q=(q||document.getElementById('search-input')?.value||'').toLowerCase().trim();
+  const poems=getPoems();
+  const sorted=[...poems].sort((a,b)=>(b.likeCount||0)-(a.likeCount||0));
+  const filtered=q?sorted.filter(p=>
+    p.title.toLowerCase().includes(q)||p.body.toLowerCase().includes(q)||
+    p.author.includes(q)||dn(p.author).toLowerCase().includes(q)||
+    (p.tags||[]).some(t=>t.includes(q))
+  ):sorted;
+
+  // Category grid
+  const catGrid=document.getElementById('category-grid');
+  const catSection=document.getElementById('category-section');
+  if(q){
+    catSection.classList.add('hidden');
+  } else {
+    catSection.classList.remove('hidden');
+    catGrid.innerHTML=CATEGORIES.map(c=>{
+      const count=poems.filter(p=>(p.tags||[]).includes(c.tag)).length;
+      return `<div class="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br ${c.gradient} group cursor-pointer transition-transform hover:scale-[1.02]" onclick="document.getElementById('search-input').value='${c.tag}';handleSearch('${c.tag}')">
+        <div class="p-5"><span class="font-headline text-2xl font-bold text-white">${c.name}</span></div>
+        <div class="absolute bottom-4 left-5 text-white/50 text-xs font-label uppercase tracking-widest">${count} poem${count!==1?'s':''}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Browse all - bento layout
+  const bento=document.getElementById('explore-bento');
+  const empty=document.getElementById('explore-empty');
+  if(!filtered.length){bento.innerHTML='';empty.classList.remove('hidden');return}
+  empty.classList.add('hidden');
+
+  let html='';
+  filtered.forEach((p,i)=>{
+    const liked=hasLiked(p.id);
+    const grad=gradientFor(p.title+p.id);
+    if(i===0){
+      // Large featured "Poem of the day" style card
+      html+=`<div class="md:col-span-4 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between group cursor-pointer ghost-border hover:bg-surface-container transition-colors relative overflow-hidden" onclick="openPoem('${p.id}')">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div>
+          <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold tracking-widest uppercase mb-4">Poem of the day</span>
+          <h4 class="font-headline text-4xl font-bold text-white mb-6 leading-tight">${esc(p.title)}</h4>
+          <p class="text-on-surface-variant font-body text-lg max-w-md leading-relaxed">"${esc(p.body.substring(0,120))}..."</p>
+        </div>
+        <div class="mt-12 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br ${grad} flex items-center justify-center text-white text-xs font-bold">${getInitial(p.author)}</div>
+            <span class="text-white font-semibold">${esc(dn(p.author))}</span>
+          </div>
+          <div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+            <span class="material-symbols-outlined filled">play_arrow</span>
+          </div>
+        </div>
+      </div>`;
+      html+=`<div class="md:col-span-2 space-y-6" id="explore-sidebar">`;
+    } else if(i<=3){
+      // Smaller side cards
+      html+=`<div class="bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group" onclick="openPoem('${p.id}')">
+        <div class="flex items-center gap-4">
+          <div class="w-16 h-16 rounded-lg overflow-hidden bg-gradient-to-br ${grad} flex-shrink-0 flex items-center justify-center">
+            <span class="material-symbols-outlined text-white/30 text-2xl filled">format_quote</span>
+          </div>
+          <div>
+            <h5 class="font-bold text-white line-clamp-1">${esc(p.title)}</h5>
+            <span class="text-xs text-on-surface-variant">${esc(dn(p.author))}</span>
+          </div>
+        </div>
+        <button onclick="event.stopPropagation();toggleLike('${p.id}','explore')" class="transition-colors ${liked?'text-primary':'text-on-surface-variant group-hover:text-primary'}">
+          <span id="explore-heart-${p.id}" class="material-symbols-outlined ${liked?'filled':''}">favorite</span>
+        </button>
+      </div>`;
+      if(i===3||i===filtered.length-1) html+=`</div>`;
+    }
+  });
+
+  // Additional poems below bento
+  if(filtered.length>4){
+    filtered.slice(4).forEach(p=>{
+      const liked=hasLiked(p.id);
+      const grad=gradientFor(p.title+p.id);
+      html+=`<div class="md:col-span-3 bg-surface-container-high p-6 rounded-xl hover:bg-surface-bright transition-colors cursor-pointer flex items-center justify-between group" onclick="openPoem('${p.id}')">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-lg overflow-hidden bg-gradient-to-br ${grad} flex-shrink-0 flex items-center justify-center">
+            <span class="material-symbols-outlined text-white/30 text-xl filled">format_quote</span>
+          </div>
+          <div>
+            <h5 class="font-bold text-white line-clamp-1">${esc(p.title)}</h5>
+            <span class="text-xs text-on-surface-variant">${esc(dn(p.author))} &middot; ${fmtCount(p.likeCount||0)} likes</span>
+          </div>
+        </div>
+        <button onclick="event.stopPropagation();toggleLike('${p.id}','explore')" class="transition-colors ${liked?'text-primary':'text-on-surface-variant group-hover:text-primary'}">
+          <span id="explore-heart-${p.id}" class="material-symbols-outlined ${liked?'filled':''}">favorite</span>
+        </button>
+      </div>`;
+    });
+  }
+  bento.innerHTML=html;
+}
+function handleSearch(v){renderExplore(v)}
+
+// ===================== PROFILE =====================
+function renderProfile(){
+  const user=getCur(),users=getUsers(),info=users[user];
+  const poems=getPoems().filter(p=>p.author===user).sort((a,b)=>b.createdAt-a.createdAt);
+  const totalLikes=poems.reduce((s,p)=>s+(p.likeCount||0),0);
+
+  document.getElementById('profile-avatar-big').textContent=getInitial(user);
+  document.getElementById('profile-displayname').textContent=info?.displayName||user;
+  document.getElementById('profile-username').textContent='@'+user;
+  document.getElementById('profile-poem-count').textContent=poems.length;
+  document.getElementById('profile-like-count').textContent=fmtCount(totalLikes);
+
+  const c=document.getElementById('profile-poems');
+  const e=document.getElementById('profile-empty');
+  if(!poems.length){c.innerHTML='';e.classList.remove('hidden');return}
+  e.classList.add('hidden');
+
+  // Bento grid like profile/code.html
+  let html='';
+  poems.forEach((p,i)=>{
+    const grad=gradientFor(p.title+p.id);
+    if(i===0){
+      // Large featured card
+      html+=`<div class="md:col-span-2 md:row-span-2 bg-surface-container-low p-10 rounded-xl relative overflow-hidden group cursor-pointer ghost-border" onclick="openPoem('${p.id}')">
+        <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-40 transition-opacity">
+          <span class="material-symbols-outlined text-8xl filled">format_quote</span>
+        </div>
+        <div class="relative z-10 flex flex-col h-full justify-between">
+          <div>
+            <span class="text-primary-dim font-label text-[10px] tracking-[0.3em] uppercase mb-4 block">${(p.tags||[])[0]||'Poetry'}</span>
+            <h3 class="font-headline text-3xl font-extrabold mb-6 leading-tight">${esc(p.title)}</h3>
+            <p class="text-on-surface-variant italic font-body text-base leading-relaxed line-clamp-6">${esc(p.body.substring(0,200))}...</p>
+          </div>
+          <div class="mt-8 flex items-center justify-between">
+            <span class="text-on-surface-variant text-sm font-label uppercase tracking-widest">${fmtCount(p.likeCount||0)} likes</span>
+            <div class="flex gap-3">
+              <button onclick="event.stopPropagation();toggleLike('${p.id}','profile')" class="${hasLiked(p.id)?'text-primary':'text-on-surface-variant'}">
+                <span id="profile-heart-${p.id}" class="material-symbols-outlined ${hasLiked(p.id)?'filled':''}">favorite</span>
+              </button>
+              <button onclick="event.stopPropagation();deletePoem('${p.id}')" class="text-on-surface-variant hover:text-error transition-colors">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    } else {
+      // Smaller cards
+      html+=`<div class="bg-surface-container-high p-8 rounded-xl hover:bg-surface-bright transition-colors group cursor-pointer" onclick="openPoem('${p.id}')">
+        <h3 class="font-headline text-xl font-bold mb-3 group-hover:text-primary transition-colors">${esc(p.title)}</h3>
+        <p class="text-on-surface-variant text-sm line-clamp-4 font-body leading-relaxed">${esc(p.body.substring(0,100))}...</p>
+        <div class="mt-5 flex justify-between items-center opacity-60">
+          <span class="text-[10px] font-label tracking-widest uppercase">${timeAgo(p.createdAt)}</span>
+          <div class="flex gap-2">
+            <button onclick="event.stopPropagation();toggleLike('${p.id}','profile')" class="${hasLiked(p.id)?'text-primary':'text-on-surface-variant'}">
+              <span id="profile-heart-${p.id}" class="material-symbols-outlined text-base ${hasLiked(p.id)?'filled':''}">favorite</span>
+            </button>
+            <button onclick="event.stopPropagation();deletePoem('${p.id}')" class="text-on-surface-variant hover:text-error transition-colors">
+              <span class="material-symbols-outlined text-base">delete</span>
+            </button>
+          </div>
+        </div>
+      </div>`;
+    }
+  });
+  c.innerHTML=html;
+}
+
+// ===================== WRITE =====================
+function resetWrite(){
+  document.getElementById('poem-title').value='';
+  document.getElementById('poem-body').value='';
+  document.getElementById('poem-tags').value='';
+  document.getElementById('write-success').classList.add('hidden');
+  const btn=document.getElementById('publish-btn');
+  btn.disabled=false;btn.classList.remove('opacity-50');
+}
+function publishPoem(){
+  const title=document.getElementById('poem-title').value.trim();
+  const body=document.getElementById('poem-body').value.trim();
+  const tagsRaw=document.getElementById('poem-tags').value.trim();
+  if(!title||!body)return alert('Please add a title and body for your poem.');
+  const tags=tagsRaw?tagsRaw.split(',').map(t=>t.trim().toLowerCase()).filter(Boolean):[];
+  const poems=getPoems();
+  poems.push({id:'p'+Date.now()+Math.random().toString(36).substr(2,4),title,body,author:getCur(),tags,createdAt:Date.now(),likeCount:0});
+  savePoems(poems);
+  document.getElementById('write-success').classList.remove('hidden');
+  const btn=document.getElementById('publish-btn');btn.disabled=true;btn.classList.add('opacity-50');
+  setTimeout(()=>navigateTo('home'),900);
+}
+
+// ===================== LIKES =====================
+function toggleLike(id, ctx){
+  const key=getCur()+':'+id, likes=getLikes(), poems=getPoems();
+  const p=poems.find(x=>x.id===id);if(!p)return;
+  // Find all heart elements for this poem across contexts
+  const prefixes=[ctx+'-heart-','feed-heart-','explore-heart-','profile-heart-','modal-heart-'];
+  const countPrefixes=[ctx+'-count-','feed-count-','explore-count-','modal-count-'];
+
+  if(likes[key]){
+    delete likes[key];
+    p.likeCount=Math.max(0,(p.likeCount||0)-1);
+    prefixes.forEach(pre=>{const el=document.getElementById(pre+id);if(el){el.classList.remove('filled');el.parentElement.classList.remove('text-primary');el.parentElement.classList.add('text-on-surface-variant')}});
+  } else {
+    likes[key]=true;
+    p.likeCount=(p.likeCount||0)+1;
+    prefixes.forEach(pre=>{const el=document.getElementById(pre+id);if(el){el.classList.add('filled','heart-pop');el.parentElement.classList.add('text-primary');el.parentElement.classList.remove('text-on-surface-variant');setTimeout(()=>el.classList.remove('heart-pop'),300)}});
+  }
+  countPrefixes.forEach(pre=>{const el=document.getElementById(pre+id);if(el)el.textContent=fmtCount(p.likeCount)});
+  saveLikes(likes);savePoems(poems);
+}
+
+// ===================== POEM MODAL (immersive reading) =====================
+function openPoem(id){
+  const p=getPoems().find(x=>x.id===id);if(!p)return;
+  const liked=hasLiked(p.id);
+  const grad=gradientFor(p.title+p.id);
+  const tags=(p.tags||[]).map(t=>esc(t)).join(' &middot; ');
+
+  // Set immersive gradient background
+  document.getElementById('poem-modal-bg').className='w-full h-full opacity-40 scale-105 bg-gradient-to-br '+grad;
+
+  // Stanza rendering with offsets (like poem_view design)
+  const stanzas=p.body.split('\n\n');
+  let bodyHtml='';
+  stanzas.forEach((stanza,i)=>{
+    const lines=esc(stanza).replace(/\n/g,'<br/>');
+    if(i%2===1){
+      // Indented stanza with left border (like poem_view)
+      bodyHtml+=`<section class="translate-x-4 md:translate-x-8"><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface hover:text-primary transition-colors cursor-default border-l-2 border-primary/20 pl-6">${lines}</p></section>`;
+    } else {
+      bodyHtml+=`<section><p class="font-body text-xl md:text-2xl leading-relaxed text-on-surface-variant hover:text-white transition-colors cursor-default">${lines}</p></section>`;
+    }
+  });
+
+  // Title with green italic accent (like "Neon <br/> Whispers")
+  const words=p.title.split(' ');
+  let titleHtml;
+  if(words.length>=2){
+    const half=Math.ceil(words.length/2);
+    titleHtml=esc(words.slice(0,half).join(' '))+' <br/> <span class="text-primary italic">'+esc(words.slice(half).join(' '))+'</span>';
+  } else {
+    titleHtml='<span class="text-primary italic">'+esc(p.title)+'</span>';
+  }
+
+  document.getElementById('poem-modal-content').innerHTML=`
+    <header class="mb-16 space-y-4">
+      <div class="flex items-center gap-4 mb-2">
+        <div class="h-[1px] w-8 bg-primary"></div>
+        <span class="font-label text-xs tracking-[0.2em] uppercase text-primary font-bold">${tags||'Poetry'}</span>
+      </div>
+      <h1 class="font-headline font-extrabold text-5xl md:text-7xl tracking-tighter leading-none text-white">${titleHtml}</h1>
+      <div class="flex items-center gap-3 pt-4">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br ${grad} flex items-center justify-center text-white font-bold text-sm font-headline border border-white/10">${getInitial(p.author)}</div>
+        <div>
+          <p class="font-headline font-bold text-sm text-white">${esc(dn(p.author))}</p>
+          <p class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">${timeAgo(p.createdAt)}</p>
+        </div>
+      </div>
+    </header>
+    <article class="space-y-10 mb-20">${bodyHtml}</article>
+    <div class="flex items-center justify-between border-t border-white/5 pt-12 pb-8">
+      <div class="flex items-center gap-8">
+        <button onclick="toggleLike('${p.id}','modal')" class="flex flex-col items-center gap-1 group transition-colors ${liked?'text-primary':'text-on-surface-variant hover:text-primary'}">
+          <span id="modal-heart-${p.id}" class="material-symbols-outlined text-2xl ${liked?'filled':''} group-hover:text-primary">favorite</span>
+          <span id="modal-count-${p.id}" class="font-label text-[10px] tracking-widest uppercase">${fmtCount(p.likeCount||0)}</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 group text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-2xl">share</span>
+          <span class="font-label text-[10px] tracking-widest uppercase">Send</span>
+        </button>
+      </div>
+      <button onclick="toggleLike('${p.id}','modal')" class="w-14 h-14 flex items-center justify-center rounded-full ${liked?'bg-primary text-on-primary':'bg-white text-black hover:bg-primary hover:text-on-primary'} transition-all active:scale-90">
+        <span class="material-symbols-outlined filled">bookmark</span>
+      </button>
+    </div>`;
+
+  document.getElementById('poem-modal').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+}
+function closePoemModal(){
+  document.getElementById('poem-modal').classList.add('hidden');
+  document.body.style.overflow='';
+  if(curPage==='home')renderHome();
+  else if(curPage==='explore')renderExplore();
+  else if(curPage==='profile')renderProfile();
+}
+
+// ===================== DELETE =====================
+function deletePoem(id){
+  if(!confirm('Delete this poem?'))return;
+  savePoems(getPoems().filter(p=>p.id!==id));
+  renderProfile();
+}
+
+// ===================== KEYBOARD =====================
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closePoemModal();
+  if(e.key==='Enter'&&!document.getElementById('auth-screen').classList.contains('hidden')){
+    if(e.target.tagName==='TEXTAREA')return;
+    if(!document.getElementById('signup-form').classList.contains('hidden'))handleSignup();
+    else handleLogin();
+  }
 });
 
-// --- Init ---
-updateNav();
+// ===================== INIT =====================
+seedData();
+if(getCur()&&getUsers()[getCur()])enterApp();
 </script>
-
 </body>
 </html>
